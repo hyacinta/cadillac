@@ -29,7 +29,7 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 1.6rem;
   color: #707070;
-  letter-spacing: -0.025;
+  letter-spacing: -0.025em;
   line-height: 1.5;
 }
 h1, h2, h3, h4, h5, h6, .subTitle1, .subTitle2 {font-weight: 500;}

@@ -1,0 +1,157 @@
+/* header */
+.header {border-top: 10px solid #9C120B;}
+.header .container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 100px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.logo {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0;
+  padding-top: 78px;
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  border: 1px solid #cecece;
+  overflow: hidden;
+  z-index: 100;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  color: #202020;
+  font-weight: 500;
+}
+.menu a {
+  display: block;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+}
+.search {
+  position: relative;
+  margin-left: 8px;
+}
+.search input {
+  width: 40px;
+  line-height: 1.5;
+  border: 1px solid rgba(206, 206, 206, 0);
+  transition: all 200ms ease;
+}
+.search.on input {
+  width: 200px;
+  padding-right: 40px;
+  border-color: #cecece;
+}
+.search .btnSearch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  padding-top: 40px;
+  background-image: url("../images/icoSearch.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* visual */
+.visual {position: relative;}
+.visual .carousel {
+  width: 500vw;
+  font-size: 0;
+  /* background-color: red; */
+}
+.visual .carousel li {
+  display: inline-block;
+  width: 100vw;
+  font-size: 1.6rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-color: green;
+}
+.visual .carousel li.banner1 {background-image: url("../images/mainBanner1.jpg");}
+.visual .carousel li.banner2 {background-image: url("../images/mainBanner2.jpg");}
+.visual .carousel li.banner3 {background-image: url("../images/mainBanner3.jpg");}
+.visual .carousel li.banner4 {background-image: url("../images/mainBanner4.jpg");}
+.visual .carousel li.banner5 {background-image: url("../images/mainBanner5.jpg");}
+.visual a {
+  display: block;
+  width: 100vw;
+  height: 540px;
+}
+.visual .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.visual .container h3, .visual .container p {
+  width: 100%;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 1);
+}
+.visual .container .subTitle {order:0;}
+.visual .container h3 {order: 1;}
+.visual .container p {order: 2;}
+.visual .container button {order: 4;}
+
+.visual .btnPrev, .visual .btnNext, .visual .indicator {
+  position: absolute;
+  z-index: 100;
+}
+.visual .btnPrev, .visual .btnNext {
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  overflow: hidden;
+}
+.visual .btnPrev {
+  left: 40px;
+  background-image: url("../images/ico_arrowL.png");
+}
+.visual .btnNext {
+  right: 40px;
+  background-image: url("../images/ico_arrowR.png");
+}
+.visual .indicator {
+  right: 0;
+  bottom: 40px;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 128px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.visual .indicator li {
+  width: 16px;
+  height: 16px;
+  margin: 0 4px;
+  padding-top: 14px;
+  border-radius: 8px;
+  border: 2px solid #dedede;
+  background-color: #dedede;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, .5);
+  overflow: hidden;
+}
+.visual .indicator li.active {
+  width: 24px;
+  background-color: #495679; 
+}
