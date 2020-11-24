@@ -1,0 +1,88 @@
+/* common */
+html {font-size: 10px;}
+
+.a11yHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0);
+  clip-path: polygon(0, 0);
+  overflow: hidden;
+}
+::selection {
+  color: #fff;
+  background: #495679;
+}
+
+/* text color */
+.colorMainLight {color: #DB615B;}
+.colorMain {color: #9C120B;}
+.colorMainDeep {color: #DB615B;}
+.colorSubLight {color: #8493BB;}
+.colorSub {color: #495679;}
+.colorSubDeep {color: #1D263E;}
+.colorPoint1 {color: #B5A268;}
+.colorPoint2 {color: #FFDC88;}
+
+/* typography */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.6rem;
+  color: #707070;
+  letter-spacing: -0.025;
+  line-height: 1.5;
+}
+h1, h2, h3, h4, h5, h6, .subTitle1, .subTitle2 {font-weight: 500;}
+
+.fontSize60 {font-size: 6rem;}
+.fontSize48 {font-size: 4.8rem;}
+.fontSize40 {font-size: 4rem;}
+.fontSize32 {font-size: 3.2rem;}
+.fontSize24 {font-size: 2.4rem;}
+.fontSize20 {font-size: 2rem;}
+.fontSize16 {font-size: 1.6rem;}
+.fontSize14 {font-size: 1.4rem;}
+
+.caption {font-size: 1.2rem;}
+.overline {font-size: 1rem;}
+
+/* PC (해상도 1080px ~) */
+@media all and (min-width: 1080px) {
+  h1, h2, h3, h4, h5, h6, p {margin-bottom: 2.4rem;}
+}
+
+/* 태블릿 가로 (해상도 768px ~ 1079px) */
+@media all and (min-width: 768px) and (max-width: 1079px) {
+  h1, h2, h3, h4, h5, h6, p {margin-bottom: 2rem;}
+}
+
+/* 모바일 가로, 태블릿 세로 (해상도 480px ~ 767px) */
+@media all and (max-width:767px) {
+  h1, h2, h3, h4, h5, h6, p {margin-bottom: 1.6rem;}
+}
+
+/* 모바일 세로 (해상도 ~ 479px) */
+@media all and (max-width: 479px) {
+  h1, h2, h3, h4, h5, h6, p {margin-bottom: 1.2rem;}
+}
+
+/* button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+}
+.btn-small {
+  padding: 0.5em 1em;
+  font-size: 1.4rem;
+}
+.btn-large {
+  padding: 0.75em 1.5em;
+  font-size: 1.6rem;
+}
+
+/* pc, 태블릿 가로 (해상도 768px ~ ) */
+@media all and (min-width: 768px) {
+  .btn-small, .btn-large {line-height: 1.5;}
+  .btn-small {font-size: 1.6rem;}
+  .btn-large {font-size: 2rem;}
+}
