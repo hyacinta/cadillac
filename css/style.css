@@ -33,6 +33,7 @@
   margin: 0.5em;
   padding: 0.5em 1em;
 }
+.submenu {position: absolute;}
 .search {
   position: relative;
   margin-left: 8px;
@@ -94,7 +95,7 @@
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  padding-top: 144px;
+  padding-top: 80px;
   z-index: 100;
 }
 .carousel img, .carVisual img {width: 100%;}
