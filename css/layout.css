@@ -11,6 +11,7 @@
   padding-right: 16px;
 }
 [class*="col-"], [class*="m-col-"], [class*="s-col-"], [class*="xs-col-"] {
+  float: left;
   padding-left: 8px;
   padding-right: 8px;
 }

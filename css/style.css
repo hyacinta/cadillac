@@ -17,10 +17,7 @@
   height: 80px;
   margin-bottom: 0;
   padding-top: 78px;
-  background-image: url("../images/logo.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #fff;
+  background: #fff url("../images/logo.png") no-repeat center;
   border: 1px solid #cecece;
   overflow: hidden;
   z-index: 100;
@@ -60,66 +57,72 @@
   height: 40px;
   margin: auto;
   padding-top: 40px;
-  background-image: url("../images/icoSearch.png");
-  background-repeat: no-repeat;
-  background-position: center;
+  background: url("../images/icoSearch.png") no-repeat center;
   overflow: hidden;
 }
-
 /* visual */
-.visual {position: relative;}
+.visual {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
 .visual .carousel {
   width: 500vw;
   font-size: 0;
 }
-.visual .carousel li {
+.carousel li {
   display: inline-block;
   width: 100vw;
   font-size: 1.6rem;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
+  text-align: center;
 }
-.visual .carousel li.banner1 {background-image: url("../images/mainBanner1.jpg");}
-.visual .carousel li.banner2 {background-image: url("../images/mainBanner2.jpg");}
-.visual .carousel li.banner3 {background-image: url("../images/mainBanner3.jpg");}
-.visual .carousel li.banner4 {background-image: url("../images/mainBanner4.jpg");}
-.visual .carousel li.banner5 {background-image: url("../images/mainBanner5.jpg");}
-.visual a {
+.carousel li a, section.carVisual a {
+  position: relative;
   display: block;
-  width: 100vw;
-  height: 560px;
+  padding-top: 40%;
+  overflow: hidden;
 }
-.visual .container {
+.carousel .container, .carousel img, .carVisual .container, .carVisual img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+.carousel .container, .carVisual .container {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   padding-top: 144px;
+  z-index: 100;
 }
-.visual .container h3, .visual .container p {
+.carousel img, .carVisual img {width: 100%;}
+.carousel .container h3, .carousel .container p, .carVisual .container h3, .carVisual .container p {
   width: 100%;
+  margin-bottom: 0;
   color: #fff;
+  text-align: left;
   text-shadow: 0 0 16px rgba(0, 0, 0, 1);
 }
-.visual .container h3, p {margin-bottom: 0;}
-.visual .container .description {
+.carousel .container .description, .carVisual .container .description {
   font-size: 2rem;
   order: -1;
 }
-.visual .container .btnMore {
+.carousel .container .btnMore {
   margin-top: 4rem;
-  box-shadow: 0 0 16px rgba(0, 0, 0, .3);
+  text-shadow: 0 0 8px rgba(0, 0, 0, .5);
 }
 .visual .btnPrev, .visual .btnNext, .visual .indicator {
   position: absolute;
-  z-index: 100;
+  z-index: 500;
 }
 .visual .btnPrev, .visual .btnNext {
   top: 0;
   bottom: 0;
   width: 56px;
   height: 80px;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto 0;
   padding-top: 80px;
   background-repeat: no-repeat;
   background-size: contain;
@@ -141,15 +144,13 @@
   display: flex;
   flex-wrap: wrap;
   width: 128px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
-.visual .indicator li {
-  height: 16px;
+.indicator li {
   margin: 0 4px;
   overflow: hidden;
 }
-.visual .indicator button {
+.indicator button {
   width: 16px;
   height: 16px;
   padding-top: 12px;
@@ -160,15 +161,206 @@
   overflow: hidden;
   transition: all 200ms ease;
 }
-.visual .indicator li.active button {
+.indicator .active button {
   width: 24px;
   background-color: #495679; 
 }
+
+/* section */
+section.lineUp, section.promotion, section.sns, section.map {
+  padding-top: 5.6rem;
+  padding-bottom: 5.6rem;
+}
+section .sectionTitle {color: #202020;}
+
+/* lineUp */
 .lineUp ul {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 8px;
+  text-align: center;
 }
-.lineUp li {
-  background-color: red;
-  border: 1px solid #ddd;
+.lineUp .carName {
+  margin: 1.6rem auto 0;
+  font-weight: 700;
+  color: #202020;
 }
+
+/* promotion */
+.promotion {background-color: #f6f6f6;}
+.promotion1 a, .promotion2 a {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 40% 16px 0;
+  border: 1px solid #cecece;
+  overflow: hidden;
+}
+.promotion1 img, .promotion2 img, .promotion .division, .promotion .description {position: absolute;}
+.promotion1 img, .promotion2 img {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: auto;
+}
+.promotion .division {
+  top: 0;
+  right: 0;
+  display: inline-block;
+  padding: 0 0.5em;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #B5A268;
+  z-index: 500;
+}
+.promotion .description {
+  top: 16px;
+  left: 16px;
+  font-size: 3.2rem;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, .5);
+  z-index: 500;
+}
+
+/* SNS */
+.sns .snsPost {
+  display: flex;
+  flex-wrap: wrap;
+}
+.snsPost li {padding: 0 1px 2px;}
+.snsPost a {
+  position: relative;
+  display: block;
+  padding-top: 100%;
+  overflow: hidden;
+}
+.sns .snsPost img, .sns .snsPost .icon {position: absolute;}
+.sns .snsPost img {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: auto;
+}
+.sns .snsPost .icon {
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 32px;
+  height: 32px;
+  padding-top: 32px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 100;
+}
+.sns .icon.insta {background-image: url("../images/ico_insta.png");}
+.sns .icon.fBook {background-image: url("../images/ico_fBook.png");}
+.sns .icon.ytube {background-image: url("../images/ico_yTube.png");}
+.sns .icon.twitter {background-image: url("../images/ico_twitter.png");}
+
+/* quickBanner */
+.quickBanner {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: #f6f6f6;
+  text-align: center;
+}
+.quickBanner a {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.quickBanner h3 {
+  width: 100%;
+  margin-bottom: 0;
+}
+.quickBanner .icon {
+  order: -1;
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.6em;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.quickBanner .icon.service {
+  background-image: url("../images/ico_service.png");
+}
+.quickBanner .icon.estimate {
+  background-image: url("../images/ico_estimate.png");
+}
+.quickBanner .icon.catalog {
+  background-image: url("../images/ico_catalog.png");
+}
+.quickBanner .icon.drive {
+  background-image: url("../images/ico_drive.png");
+}
+
+
+/* 전시장 찾기 */
+.map {
+  display: flex;
+  flex-wrap: wrap;
+}
+.map .mapView {
+  padding-top: 50%;
+  overflow: hidden;
+  border: 1px solid #cecece;
+  order: -1;
+}
+.map .storeSearch {
+  padding: 0;
+  background-color: #f9f9f9;
+}
+.map .searchInput {
+  padding: 16px 24px;
+  background-color: #333;
+}
+.map .sectionTitle {color:#fff;}
+.map .storeSearch ul {
+  padding: 16px 24px;
+}
+
+/* footer */
+.footer {
+  padding: 80px 0;
+  background-color: #333;
+}
+.sitemap h3 {
+  font-size: 1.6rem;
+  color: #fff;
+}
+.sitemap > ul, .copyright > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.sitemap .row {
+  width: 100%;
+  margin-bottom: .8rem;
+}
+.sitemap .row ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sitemap .row li {
+  width: 20%;
+  color: #aaa;
+}
+.copyright {
+  margin-top: 1.6rem;
+  padding-top: 4rem;
+  border-top: 1px solid #444;
+  color: #aaa;
+}
+.copyright li {padding: 0 1em;}
+
+
+
+/* subPage */
