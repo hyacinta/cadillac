@@ -1,18 +1,19 @@
 /* header */
-.header {border-top: 16px solid #9C120B;}
-.header .container {
+.header {
   position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 0.5em 1em 0.5em 100px;
   padding-left: 100px;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  border-top: 16px solid #9C120B;
 }
 .logo {
   position: absolute;
   top: -4px;
-  left: 0;
+  left: 16px;
   width: 80px;
   height: 80px;
   margin-bottom: 0;
@@ -20,7 +21,7 @@
   background: #fff url("../images/logo.png") no-repeat center;
   border: 1px solid #cecece;
   overflow: hidden;
-  z-index: 100;
+  z-index: 9999;
 }
 .menu {
   display: flex;
@@ -33,7 +34,32 @@
   margin: 0.5em;
   padding: 0.5em 1em;
 }
-.submenu {position: absolute;}
+.subMenu {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  display: none;
+  width: 100vw;
+  padding: 1em 0;
+  background-color:#fff;
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+  z-index: 9000;
+}
+.menu .active .subMenu {display: block;}
+.subMenuTitle {
+  margin-bottom: 1.6rem;
+  padding-left: .5em;
+  color: #202020;
+}
+.subMenu li {margin-bottom:0.5em;}
+.subMenu a {
+  display: block;
+  margin: 0 0 .5em;
+  padding: 0.5em;
+  /* border: 1px solid #cecece; */
+}
+
 .search {
   position: relative;
   margin-left: 8px;
@@ -77,13 +103,13 @@
   font-size: 1.6rem;
   text-align: center;
 }
-.carousel li a, section.carVisual a {
+.carousel li a {
   position: relative;
   display: block;
   padding-top: 40%;
   overflow: hidden;
 }
-.carousel .container, .carousel img, .carVisual .container, .carVisual img {
+.carousel .container, .carousel img {
   position: absolute;
   top: 0;
   right: 0;
