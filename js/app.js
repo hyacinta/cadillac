@@ -29,3 +29,26 @@ $body.onclick = ({target}) => {
     $search.classList.remove('on');
   };
 }
+
+
+// 캐러셀
+
+const carousel = (() => {
+  let carouselPosition = 0;
+
+  return {
+    nextCarousel() {
+      $carousel.style.transition = carouselPosition === -400 ? 'none' : 'all 200ms ease';
+      carouselPosition = carouselPosition === -400 ? 0 : carouselPosition - 100;
+      $carousel.style.transform = `translateX(${carouselPosition}vw)`;
+    },
+    prevCarousel() {
+      $carousel.style.transition = carouselPosition === 0 ? 'none' : 'all 200ms ease';
+      carouselPosition = carouselPosition === 0 ? -400 : carouselPosition + 100;
+      $carousel.style.transform = `translateX(${carouselPosition}vw)`;
+    }
+  };
+})();
+
+$btnNext.onclick = carousel.nextCarousel;
+$btnPrev.onclick = carousel.prevCarousel;
