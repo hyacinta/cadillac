@@ -10,8 +10,8 @@
   align-items: center;
 }
 .logo {
-  position: relative;
-  top: -3px;
+  position: absolute;
+  top: -4px;
   flex-shrink: 0;
   width: 80px;
   height: 80px;
@@ -31,9 +31,12 @@
   font-weight: 500;
 }
 .menu a {
+  position: relative;
   display: block;
-  margin: 0.5em;
-  padding: 0.5em 1em;
+  margin: 0 1em;
+  padding: 1.5em 0.5em;
+  color: #666;
+  font-weight: 500;
 }
 .search {
   position: relative;
@@ -43,6 +46,7 @@
   width: 40px;
   line-height: 1.5;
   border: 1px solid rgba(206, 206, 206, 0);
+  background-color: transparent;
   transition: all 200ms ease;
 }
 .search.on input {
@@ -50,7 +54,7 @@
   padding-right: 40px;
   border-color: #cecece;
 }
-.search .btnSearch {
+.search .btnSearchOn {
   position: absolute;
   top: 0;
   right: 0;
@@ -59,19 +63,23 @@
   height: 40px;
   margin: auto;
   padding-top: 40px;
-  background: url("../images/icoSearch.png") no-repeat center;
+  background: #fff url("../images/icoSearch.png") no-repeat center;
   overflow: hidden;
+  z-index: 100;
 }
+.search.on .btnSearchOn {z-index: -10;}
 .subMenu {
   position: absolute;
-  top: 74px;
+  top: 72px;
   left: 0;
   display: none;
   width: 100vw;
-  padding: 1em 0;
+  padding: 0 1em;
   background-color:#fff;
+  border-top: 1px solid #cecece;
   border-bottom: 1px solid #cecece;
   z-index: 9000;
+  overflow: hidden;
 }
 .subMenuTitle {
   margin-bottom: 1.6rem;
@@ -80,20 +88,63 @@
 }
 .subMenu li {margin-bottom:0.5em;}
 .subMenu a {
-  display: block;
-  padding: 0.5em;
+  display: inline-block;
+  margin: 0;
+  padding: 0.25em 0.5em ;
+  border-bottom: 1px solid transparent;
 }
-.menu .active .subMenu {display: block;}
+.subMenu a:hover {border-color: #9C120B;}
+.menu .active > a, .menu a:hover {color: #202020;}
+.menu li > a::after {
+  content:"";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  margin: auto;
+  height: 2px;
+  background-color: transparent;
+  transition: all 200ms ease;
+}
+.menu .active > a::after, .menu > li > a:hover::after {
+  background-color: #aaa;
+  transition: all 200ms ease;
+}
+.menu li.active > a::after {
+  height: 4px;
+  background-color: #9C120B;
+  transition: all 200ms ease;
+}
+.menu .active .subMenu {
+  display: block;
+  padding: 2em 1em 1em;
+  animation: mouseOn 200ms ease-in-out;
+}
+@keyframes mouseOn {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: initial;
+    opacity: 1;
+  }
+}
 
 /* visual */
 .visual {
   position: relative;
   width: 100vw;
+  border-bottom: 1px solid #cecece;
   overflow: hidden;
 }
 .visual .carousel {
   width: 500vw;
   font-size: 0;
+  transform: translateX(0);
+  transition: all 200ms ease;
 }
 .carousel li {
   display: inline-block;
