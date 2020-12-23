@@ -48,6 +48,7 @@
   border: 1px solid rgba(206, 206, 206, 0);
   background-color: transparent;
   transition: all 200ms ease;
+  outline: none;
 }
 .search.on input {
   width: 200px;
@@ -64,6 +65,7 @@
   margin: auto;
   padding-top: 40px;
   background: #fff url("../images/icoSearch.png") no-repeat center;
+  outline: none;
   overflow: hidden;
   z-index: 100;
 }
@@ -220,7 +222,9 @@
   display: flex;
   flex-wrap: wrap;
   width: 128px;
+  height: 16px;
   margin: 0 auto;
+  overflow: hidden;
 }
 .indicator li {
   margin: 0 4px;
@@ -236,6 +240,7 @@
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, .5);
   overflow: hidden;
   transition: all 200ms ease;
+  outline: none;
 }
 .indicator .active button {
   width: 24px;
@@ -302,9 +307,31 @@ section .sectionTitle {color: #202020;}
 }
 
 /* SNS */
+.sns > .container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.sns .sectionTitle {flex-grow: 1;}
+.sns .snsLink {
+  align-self: flex-end;
+  display: flex;
+  margin-bottom: 24px;
+}
+.sns .snsLink > li {
+  width: 32px;
+  height: 32px;
+  margin-left: 8px;
+  padding-top: 32px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
 .sns .snsPost {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 .snsPost li {padding: 0 1px 2px;}
 .snsPost a {
@@ -436,7 +463,3 @@ section .sectionTitle {color: #202020;}
   color: #aaa;
 }
 .copyright li {padding: 0 1em;}
-
-
-
-/* subPage */
