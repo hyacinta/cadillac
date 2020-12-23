@@ -11,12 +11,12 @@
 }
 .logo {
   position: absolute;
-  top: -4px;
+  top: -2px;
   flex-shrink: 0;
   width: 80px;
-  height: 80px;
+  height: 72px;
   margin-bottom: -7px;
-  padding-top: 78px;
+  padding-top: 70px;
   background: #fff url("../images/logo.png") no-repeat center;
   border: 1px solid #cecece;
   overflow: hidden;
@@ -30,13 +30,15 @@
   color: #202020;
   font-weight: 500;
 }
-.menu a {
+
+.menu li > button, .menu a {
   position: relative;
   display: block;
   margin: 0 1em;
   padding: 1.5em 0.5em;
-  color: #666;
+  font-size: 1.6rem;
   font-weight: 500;
+  color: #666;
 }
 .search {
   position: relative;
@@ -70,6 +72,34 @@
   z-index: 100;
 }
 .search.on .btnSearchOn {z-index: -10;}
+.menu li > button:hover, .menu .active > button, .menu .active > a, .menu a:hover {color: #202020;}
+.menu li > button::after, .menu li > a::after {
+  content:"";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  margin: auto;
+  height: 2px;
+  background-color: transparent;
+  transition: all 200ms ease;
+}
+.menu li > button:hover::after, .menu .active > button::after, .menu .active > a::after, .menu > li > a:hover::after {
+  background-color: #aaa;
+  transition: all 200ms ease;
+}
+.menu li.active > button::after, .menu li.active > a::after {
+  height: 4px;
+  background-color: #9C120B;
+  transition: all 200ms ease;
+}
+.menu .active .subMenu {
+  display: block;
+  padding: 2em 1em 1em;
+  animation: mouseOn 200ms ease-in-out;
+}
 .subMenu {
   position: absolute;
   top: 72px;
@@ -96,34 +126,6 @@
   border-bottom: 1px solid transparent;
 }
 .subMenu a:hover {border-color: #9C120B;}
-.menu .active > a, .menu a:hover {color: #202020;}
-.menu li > a::after {
-  content:"";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
-  width: 100%;
-  margin: auto;
-  height: 2px;
-  background-color: transparent;
-  transition: all 200ms ease;
-}
-.menu .active > a::after, .menu > li > a:hover::after {
-  background-color: #aaa;
-  transition: all 200ms ease;
-}
-.menu li.active > a::after {
-  height: 4px;
-  background-color: #9C120B;
-  transition: all 200ms ease;
-}
-.menu .active .subMenu {
-  display: block;
-  padding: 2em 1em 1em;
-  animation: mouseOn 200ms ease-in-out;
-}
 @keyframes mouseOn {
   0% {
     height: 0;
