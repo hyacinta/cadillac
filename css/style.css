@@ -22,7 +22,7 @@
   overflow: hidden;
   z-index: 9999;
 }
-.header nav {flex-grow: 1;}
+.header .nav {flex-grow: 1;}
 .menu {
   display: flex;
   justify-content: flex-end;
@@ -102,7 +102,7 @@
 }
 .subMenu {
   position: absolute;
-  top: 72px;
+  top: 67px;
   left: 0;
   display: none;
   width: 100vw;
@@ -250,7 +250,7 @@
 }
 
 /* section */
-section.lineUp, section.promotion, section.sns, section.map {
+section.lineUp, section.promotion, section.sns, section.map, div.lineUp, div.promotion, div.sns, div.map {
   padding-top: 5.6rem;
   padding-bottom: 5.6rem;
 }

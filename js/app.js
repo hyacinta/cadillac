@@ -9,7 +9,7 @@ const $carousel = document.querySelector('.carousel');
 const $indicator = document.querySelector('.indicator');
 
 $menu.onclick = ({target}) => {
-  if (!target.matches('.menu > li > a')) return;
+  if (!target.matches('.menu > li > button')) return;
   [...$menu.children].forEach(item => item.classList.toggle('active', target.parentNode === item));
 }
 
