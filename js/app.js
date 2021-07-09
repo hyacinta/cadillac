@@ -4,8 +4,6 @@ const $menu = document.querySelector(".menu");
 const $search = document.querySelector(".search");
 const $searchInput = document.querySelector(".searchInput");
 const $visual = document.querySelector(".visual");
-const $btnPrev = document.querySelector(".btnPrev");
-const $btnNext = document.querySelector(".btnNext");
 const $carousel = document.querySelector(".carousel");
 const $indicator = document.querySelector(".indicator");
 const $lineUp = document.querySelector(".lineUp ul.row");
@@ -28,8 +26,8 @@ const carouselBanner = [
     subTitle: "CROSSOVER STANDAR",
     description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
     btnDescription: "XT5 SUV",
-    imgUrl: "./images/mainBanner1.jpg",
-    imgAlt: "메인 이벤트1 배경",
+    imgUrl: "./images/mainBanner2.jpg",
+    imgAlt: "메인 이벤트2 배경",
   },
   {
     bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
@@ -37,8 +35,8 @@ const carouselBanner = [
     subTitle: "CROSSOVER STANDAR",
     description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
     btnDescription: "XT5 SUV",
-    imgUrl: "./images/mainBanner1.jpg",
-    imgAlt: "메인 이벤트1 배경",
+    imgUrl: "./images/mainBanner3.jpg",
+    imgAlt: "메인 이벤트3 배경",
   },
   {
     bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
@@ -46,8 +44,8 @@ const carouselBanner = [
     subTitle: "CROSSOVER STANDAR",
     description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
     btnDescription: "XT5 SUV",
-    imgUrl: "./images/mainBanner1.jpg",
-    imgAlt: "메인 이벤트1 배경",
+    imgUrl: "./images/mainBanner4.jpg",
+    imgAlt: "메인 이벤트4 배경",
   },
   {
     bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
@@ -55,11 +53,10 @@ const carouselBanner = [
     subTitle: "CROSSOVER STANDAR",
     description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
     btnDescription: "XT5 SUV",
-    imgUrl: "./images/mainBanner1.jpg",
-    imgAlt: "메인 이벤트1 배경",
+    imgUrl: "./images/mainBanner5.jpg",
+    imgAlt: "메인 이벤트5 배경",
   },
 ];
-
 // lineUp
 const lineUpBanner = [
   {
@@ -87,33 +84,6 @@ const lineUpBanner = [
     imgAlt: "V-SERIES 대표 차종",
   },
 ];
-
-// nav open
-$menu.onclick = ({ target }) => {
-  if (!target.matches(".menu > li > button")) return;
-  [...$menu.children].forEach((item) =>
-    item.classList.toggle("active", target.parentNode === item)
-  );
-};
-
-// searchbar open
-$search.onclick = ({ target }) => {
-  if (!target.matches(".btnSearchOn")) return;
-  target.parentNode.classList.add("on");
-  $searchInput.placeholder = "검색어를 입력하세요";
-  $searchInput.value = "";
-  $searchInput.focus();
-};
-
-// nav & search bar closed
-$body.onclick = ({ target }) => {
-  if (!target.matches(".menu > li *")) {
-    [...$menu.children].forEach((item) => item.classList.remove("active"));
-  }
-  if (!(target === $searchInput || target.matches(".btnSearchOn"))) {
-    $search.classList.remove("on");
-  }
-};
 
 const carouselRender = ($carousel, carouselBanner) => {
   $carousel.innerHTML = `${[
@@ -172,7 +142,72 @@ const lineUpRender = ($lineUp, lineUpBanner) => {
 // 4. 현재 슬라이드가 변경중이라면 버튼은 클릭되지 않아야 한다.
 // 5. 버튼을 클릭하지 않아도 자동으로 슬라이드가 돌아가고 있어야 한다.
 
+let currentBanner = 0;
+let isMoving = false;
+const duration = 600;
+let autoPlay = null;
+
+const move = (currentBanner, duration = 0) => {
+  if (duration) isMoving = true;
+  $carousel.style.setProperty("--duration", duration);
+  $carousel.style.setProperty("--currentBanner", currentBanner);
+};
+
 window.onload = () => {
   lineUpRender($lineUp, lineUpBanner);
   carouselRender($carousel, carouselBanner);
+  move(++currentBanner);
+
+  autoPlay = setInterval(() => move(++currentBanner, duration), 3000);
+};
+
+// event binding
+
+// nav open
+$menu.onclick = ({ target }) => {
+  if (!target.matches(".menu > li > button")) return;
+  [...$menu.children].forEach((item) =>
+    item.classList.toggle("active", target.parentNode === item)
+  );
+};
+
+// searchbar open
+$search.onclick = ({ target }) => {
+  if (!target.matches(".btnSearchOn")) return;
+  target.parentNode.classList.add("on");
+  $searchInput.placeholder = "검색어를 입력하세요";
+  $searchInput.value = "";
+  $searchInput.focus();
+};
+
+// nav & search bar closed
+$body.onclick = ({ target }) => {
+  if (!target.matches(".menu > li *")) {
+    [...$menu.children].forEach((item) => item.classList.remove("active"));
+  }
+  if (!(target === $searchInput || target.matches(".btnSearchOn"))) {
+    $search.classList.remove("on");
+  }
+};
+
+$visual.onclick = ({ target }) => {
+  if (!target.classList.contains("moveBtn") || isMoving) return;
+  clearInterval(autoPlay);
+  const directionCheck = target.classList.contains("btnPrev") ? -1 : 1;
+  currentBanner += 1 * directionCheck;
+  move(currentBanner, duration);
+  autoPlay = setInterval(() => move(++currentBanner, duration), 3000);
+};
+
+$carousel.ontransitionend = () => {
+  isMoving = false;
+  const directionCheck =
+    currentBanner === 0
+      ? 1
+      : currentBanner === carouselBanner.length + 1
+      ? -1
+      : 0;
+  if (!directionCheck) return;
+  currentBanner += carouselBanner.length * directionCheck;
+  move(currentBanner);
 };

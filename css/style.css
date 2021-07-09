@@ -166,8 +166,10 @@
 .visual .carousel {
   width: 700vw;
   font-size: 0;
-  transform: translateX(0);
-  transition: all 200ms ease;
+  --currentBanner: 0;
+  --duration: 0;
+  transform: translateX(calc(var(--currentBanner) * -100vw));
+  transition: transform calc(var(--duration) * 1ms) ease-out;
 }
 .carousel li {
   display: inline-block;
@@ -247,6 +249,13 @@
 .visual .btnNext {
   right: 40px;
   background-image: url("../images/ico_arrowR.png");
+}
+
+.visual .btnPrev.disabled,
+.visual .btnNext.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 .visual .indicator {
   right: 0;
