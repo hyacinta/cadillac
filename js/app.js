@@ -7,6 +7,7 @@ const $visual = document.querySelector(".visual");
 const $carousel = document.querySelector(".carousel");
 const $indicator = document.querySelectorAll(".indicator > li");
 const $lineUp = document.querySelector(".lineUp ul.row");
+const $promotion = document.querySelector(".promotion ul");
 const $mapView = document.querySelector(".mapView");
 const $storeList = document.querySelector(".storeList");
 // data
@@ -85,7 +86,19 @@ const lineUpBanner = [
     imgAlt: "V-SERIES 대표 차종",
   },
 ];
-
+// banner
+const bannerData = [
+  {
+    bannerType: "PROMOTION",
+    bannerLink: "https://www.cadillac.co.kr/vehicle/xt5/vehicle.php",
+    imgUrl: "./images/promotion1.png",
+  },
+  {
+    bannerType: "EVENT",
+    bannerLink: "https://www.cadillac.co.kr/vehicle/xt5/vehicle.php",
+    imgUrl: "./images/promotion2.png",
+  },
+];
 // 전시장 데이터
 
 const locationListData = [
@@ -260,6 +273,22 @@ const lineUpRender = ($lineUp, lineUpBanner) => {
     .join("")}`;
 };
 
+const bannerRender = ($promotion, bannerData) => {
+  $promotion.innerHTML = `${bannerData
+    .map(
+      ({
+        bannerType,
+        bannerLink,
+        imgUrl,
+      }) => `<li class="promotion2 col-6 m-col-4 s-col-4 xs-col-2">
+  <a href="${bannerLink}">
+    <h2 class="division">${bannerType}</h2>
+    <img src="${imgUrl}" alt="TEST DRIVE THE BEST SEDAN DRIVE 시승 이벤트">
+  </a>
+</li>`
+    )
+    .join("")}`;
+};
 const showroomRender = ($storeList, locationListData) => {
   $storeList.innerHTML = `${locationListData
     .map(
@@ -313,8 +342,9 @@ let marker = new kakao.maps.Marker({
 });
 
 window.onload = () => {
-  lineUpRender($lineUp, lineUpBanner);
   carouselRender($carousel, carouselBanner);
+  lineUpRender($lineUp, lineUpBanner);
+  bannerRender($promotion, bannerData);
   showroomRender($storeList, locationListData);
   move(++currentBanner);
 
