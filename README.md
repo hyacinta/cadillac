@@ -14,13 +14,15 @@
 - 상단 navigation suv메뉴 활성화
   <details>
     <summary>열기 / 닫기</summary>
-    1. 상단 navigation의 각 메뉴로 focus를 이동하여 선택하거나 클릭하면 sub navigation을 볼 수 있는 메뉴창이 활성화 되어 펼쳐진다.
-    2. 활성화된 sub navigation외의 다른 영역을 클릭하면 이미 활성화된 sub navigation은  비활성화 된다.
+
+  1. 상단 navigation의 각 메뉴로 focus를 이동하여 선택하거나 클릭하면 sub navigation을 볼 수 있는 메뉴창이 활성화 되어 펼쳐진다.
+  2. 활성화된 sub navigation외의 다른 영역을 클릭하면 이미 활성화된 sub navigation은 비활성화 된다.
   </details>
 
 - 검색창 활성화
   <details>
     <summary>열기 / 닫기</summary>
+    
     1. 검색창을 의미하는 돋보기 icon을 클릭하거나 focus를 이동하여 선택하면 검색어를 입력할 수 있는 input창이 보여진다.
     2. 활성화된 검색 input창 이외의 곳을 클릭하면 input창은 비활성화 된다. 
     </details>
@@ -42,6 +44,7 @@
   <details>
     <summary>열기 / 닫기</summary>
     indicator는 무한 캐러셀로 돌아가는 배너와 연결되어 있다.
+    
     
     1. indicator의 버튼을 클릭하면 각각 해당하는 배너로 이동한다.
     2. indicator의 버튼은 배너의 순서에 따라서 활성화 또는 비활성화 되어야 한다.
