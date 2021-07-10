@@ -7,7 +7,8 @@ const $visual = document.querySelector(".visual");
 const $carousel = document.querySelector(".carousel");
 const $indicator = document.querySelectorAll(".indicator > li");
 const $lineUp = document.querySelector(".lineUp ul.row");
-
+const $mapView = document.querySelector(".mapView");
+const $storeList = document.querySelector(".storeList");
 // data
 // carousel banner
 const carouselBanner = [
@@ -85,6 +86,129 @@ const lineUpBanner = [
   },
 ];
 
+// 전시장 데이터
+
+const locationListData = [
+  {
+    location: "서울/경기",
+    showroomList: [
+      {
+        showroomId: 0,
+        shopName: "서초 전시장",
+        address: "서울시 서초구 반포대로 59",
+        tel: "02-516-0560",
+        latitude: 37.51912,
+        longitude: 127.03461,
+      },
+      {
+        showroomId: 1,
+        shopName: "용산 전시장",
+        address: "서울시 용산구 이촌로 166, 1층",
+        tel: "02-6951-4200",
+        latitude: 37.521634,
+        longitude: 126.965401,
+      },
+      {
+        showroomId: 2,
+        shopName: "분당판교 전시장",
+        address: "경기도 성남시 분당구 대왕판교로 196",
+        tel: "031-715-6201",
+        latitude: 37.36116,
+        longitude: 127.10217,
+      },
+      {
+        showroomId: 3,
+        shopName: "수원 전시장",
+        address: "경기도 수원시 영통구 중부대로 316, 1층",
+        tel: "031-8067-6200",
+        latitude: 37.27321,
+        longitude: 127.05024,
+      },
+    ],
+  },
+  {
+    location: "충청",
+    showroomList: [
+      {
+        showroomId: 4,
+        shopName: "대전 전시장",
+        address: "대전광역시 중구 중앙로 124 1층",
+        tel: "042-222-2270",
+        latitude: 36.32773,
+        longitude: 127.42382,
+      },
+      {
+        showroomId: 5,
+        shopName: "천안 전시장",
+        address: "충남 천안시 동남구 구성동 50-4",
+        tel: "041-572-0007",
+        latitude: 36.79912,
+        longitude: 127.16496,
+      },
+    ],
+  },
+  {
+    location: "경상",
+    showroomList: [
+      {
+        showroomId: 6,
+        shopName: "대구 전시장",
+        address: "대구광역시 수성구 달구벌대로 2327",
+        tel: "053-765-7070",
+        latitude: 35.86059,
+        longitude: 128.617,
+      },
+    ],
+  },
+  {
+    location: "호남",
+    showroomList: [
+      {
+        showroomId: 7,
+        shopName: "광주 전시장",
+        address: "광주시 서구 죽봉대로 37",
+        tel: "062-363-4434",
+        latitude: 35.15671,
+        longitude: 126.88273,
+      },
+      {
+        showroomId: 8,
+        shopName: "전주 전시장",
+        address: "전라북도 전주시 덕진구 온고을로 458",
+        tel: "053-765-7070",
+        latitude: 35.85212,
+        longitude: 127.07943,
+      },
+    ],
+  },
+  {
+    location: "제주",
+    showroomList: [
+      {
+        showroomId: 9,
+        shopName: "제주 전시장",
+        address: "제주시 연삼로 145 가동 1층",
+        tel: "064-749-8850",
+        latitude: 33.49347,
+        longitude: 126.50796,
+      },
+    ],
+  },
+];
+
+const showroomData = [];
+
+const makeShowroomData = (locationListData) => {
+  let arr = [];
+
+  locationListData.forEach(({ showroomList }) =>
+    showroomList.forEach((showroom) => (arr = [...arr, showroom]))
+  );
+  return arr;
+};
+
+const showroomList = makeShowroomData(locationListData);
+
 const carouselRender = ($carousel, carouselBanner) => {
   $carousel.innerHTML = `${[
     carouselBanner[carouselBanner.length - 1],
@@ -136,6 +260,27 @@ const lineUpRender = ($lineUp, lineUpBanner) => {
     .join("")}`;
 };
 
+const showroomRender = ($storeList, locationListData) => {
+  $storeList.innerHTML = `${locationListData
+    .map(
+      ({ location, showroomList }) => `<h3 class="location">${location}</h3>
+    <ul class="locationList">
+      ${showroomList
+        .map(
+          ({ showroomId, shopName, address, tel }) => `<li id="${showroomId}">
+      <h4 class="storeName">${shopName}</h4>
+      <p class="address"><span>주소 :</span> ${address}</p>
+      <p class="tel"><span>전화 :</span> ${tel}</p>
+      <button type="button" title="${shopName}" class="btnMapView">지도 보기</button>
+    </li>`
+        )
+        .join("")}
+    </ul>
+    `
+    )
+    .join("")}`;
+};
+
 let currentBanner = 0;
 let isMoving = false;
 const duration = 600;
@@ -156,12 +301,27 @@ const move = (currentBanner, duration = 0) => {
   indicatorMove(currentBanner);
 };
 
+// map API
+let options = {
+  center: new kakao.maps.LatLng(37.519122, 127.034615), //지도의 중심좌표.
+  level: 3, //지도의 레벨(확대, 축소 정도)
+};
+let markerPosition = new kakao.maps.LatLng(37.519122, 127.034615);
+let map = null;
+let marker = new kakao.maps.Marker({
+  position: markerPosition,
+});
+
 window.onload = () => {
   lineUpRender($lineUp, lineUpBanner);
   carouselRender($carousel, carouselBanner);
+  showroomRender($storeList, locationListData);
   move(++currentBanner);
 
   autoPlay = setInterval(() => move(++currentBanner, duration), 3000);
+
+  map = new kakao.maps.Map($mapView, options);
+  marker.setMap(map);
 };
 
 // event binding
@@ -220,4 +380,18 @@ $carousel.ontransitionend = () => {
   if (!directionCheck) return;
   currentBanner += carouselBanner.length * directionCheck;
   move(currentBanner);
+};
+
+$storeList.onclick = ({ target }) => {
+  let showroom = showroomList.filter(
+    (showroom) => showroom.showroomId === target.parentNode.id * 1
+  );
+  showroom = showroom[0];
+  options.center = new kakao.maps.LatLng(showroom.latitude, showroom.longitude);
+  markerPosition = new kakao.maps.LatLng(showroom.latitude, showroom.longitude);
+  marker = new kakao.maps.Marker({
+    position: markerPosition,
+  });
+  map = new kakao.maps.Map($mapView, options);
+  marker.setMap(map);
 };

@@ -495,17 +495,63 @@ section .sectionTitle {
   padding: 0;
   background-color: #f9f9f9;
 }
-.map .searchInput {
-  padding: 16px 24px;
-  background-color: #333;
-}
 .map .sectionTitle {
+  margin-bottom: 0;
+  padding: 16px 24px 20px;
+  background-color: #333;
   color: #fff;
+  text-align: center;
 }
-.map .storeSearch ul {
-  padding: 16px 24px;
+.map .sectionDescription {
+  margin-bottom: 0;
+  padding: 16px;
 }
-
+.map .storeList {
+  height: 379px;
+  padding: 0 16px 16px 16px;
+  overflow-y: scroll;
+}
+.map .location {
+  margin-bottom: 0;
+  color: #1d263e;
+}
+.map .locationList {
+  margin-bottom: 16px;
+  border-bottom: 2px solid #aaa;
+}
+.map .locationList > li {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-bottom: 1px dashed #ccc;
+}
+.map .locationList > li:last-child {
+  border-bottom: none;
+}
+.map .storeName {
+  margin-bottom: 8px;
+  color: #1d263e;
+  order: -1;
+}
+.map .address,
+.map .tel,
+.map .fax {
+  margin: 0 4px 4px;
+}
+.map .storeList span {
+  font-weight: bold;
+}
+.map .btnMapView {
+  height: 28px;
+  padding: 3px 8px 0px;
+  margin-top: -3px;
+  margin-left: 8px;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: #9c120b;
+  border-radius: 4px;
+  order: -1;
+}
 /* footer */
 .footer {
   padding: 80px 0;
