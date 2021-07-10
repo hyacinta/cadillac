@@ -5,7 +5,7 @@ const $search = document.querySelector(".search");
 const $searchInput = document.querySelector(".searchInput");
 const $visual = document.querySelector(".visual");
 const $carousel = document.querySelector(".carousel");
-const $indicator = document.querySelector(".indicator");
+const $indicator = document.querySelectorAll(".indicator > li");
 const $lineUp = document.querySelector(".lineUp ul.row");
 
 // data
@@ -142,15 +142,28 @@ const lineUpRender = ($lineUp, lineUpBanner) => {
 // 4. 현재 슬라이드가 변경중이라면 버튼은 클릭되지 않아야 한다.
 // 5. 버튼을 클릭하지 않아도 자동으로 슬라이드가 돌아가고 있어야 한다.
 
+// 인디케이터
+// 1. 버튼을 누르면 해당 슬라이드로 부드럽게 이동한다.
+// 2. 인디케이터의 모양이 애니메이션으로 부드럽게 적용된다.
+
 let currentBanner = 0;
 let isMoving = false;
 const duration = 600;
 let autoPlay = null;
 
+const indicatorMove = (currentBanner) => {
+  $indicator.forEach((item) =>
+    item.classList.contains(`${currentBanner}`)
+      ? item.classList.add("active")
+      : item.classList.remove("active")
+  );
+};
+
 const move = (currentBanner, duration = 0) => {
   if (duration) isMoving = true;
   $carousel.style.setProperty("--duration", duration);
   $carousel.style.setProperty("--currentBanner", currentBanner);
+  indicatorMove(currentBanner);
 };
 
 window.onload = () => {
@@ -191,12 +204,19 @@ $body.onclick = ({ target }) => {
 };
 
 $visual.onclick = ({ target }) => {
+  if (target.classList.contains("indicatorBtn")) {
+    clearInterval(autoPlay);
+    currentBanner = target.parentNode.classList[0] * 1;
+    move(currentBanner, duration);
+    autoPlay = setInterval(() => move(++currentBanner, duration), 6000);
+  }
   if (!target.classList.contains("moveBtn") || isMoving) return;
   clearInterval(autoPlay);
   const directionCheck = target.classList.contains("btnPrev") ? -1 : 1;
   currentBanner += 1 * directionCheck;
+
   move(currentBanner, duration);
-  autoPlay = setInterval(() => move(++currentBanner, duration), 3000);
+  autoPlay = setInterval(() => move(++currentBanner, duration), 6000);
 };
 
 $carousel.ontransitionend = () => {
