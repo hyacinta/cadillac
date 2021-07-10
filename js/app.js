@@ -12,49 +12,49 @@ const $lineUp = document.querySelector(".lineUp ul.row");
 // carousel banner
 const carouselBanner = [
   {
-    bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
-    title: "1 2020 Kadillac XT5",
-    subTitle: "CROSSOVER STANDAR",
-    description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
-    btnDescription: "XT5 SUV",
+    bannerLink: "https://www.cadillac.co.kr/vehicle/xt4/vehicle.php",
+    title: "2021 XT4",
+    subTitle: "THE UNMISTAKABLE",
+    description: "",
+    btnDescription: "XT4 SUV",
     imgUrl: "./images/mainBanner1.jpg",
-    imgAlt: "메인 이벤트1 배경",
+    imgAlt: "XT4 대표 이미지",
   },
   {
-    bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
-    title: "2 2020 Kadillac XT5",
-    subTitle: "CROSSOVER STANDAR",
-    description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
-    btnDescription: "XT5 SUV",
+    bannerLink: "https://www.cadillac.co.kr/vehicle/ct5_2021/vehicle.php",
+    title: "2021 CT5",
+    subTitle: "UNRIVALED DRIVING PLEASURE",
+    description: "",
+    btnDescription: "CT5 SEDANS",
     imgUrl: "./images/mainBanner2.jpg",
-    imgAlt: "메인 이벤트2 배경",
+    imgAlt: "CT5 대표 이미지",
   },
   {
-    bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
-    title: "3 2020 Kadillac XT5",
-    subTitle: "CROSSOVER STANDAR",
-    description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
-    btnDescription: "XT5 SUV",
+    bannerLink: "https://www.cadillac.co.kr/vehicle/xt5/vehicle.php",
+    title: "2020 XT5",
+    subTitle: "THE UNDENIABLE",
+    description: "",
+    btnDescription: "XT5 SUVS",
     imgUrl: "./images/mainBanner3.jpg",
-    imgAlt: "메인 이벤트3 배경",
+    imgAlt: "XT5 대표 이미지",
   },
   {
-    bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
-    title: "4 2020 Kadillac XT5",
-    subTitle: "CROSSOVER STANDAR",
-    description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
-    btnDescription: "XT5 SUV",
+    bannerLink: "https://www.cadillac.co.kr/vehicle/escalade_2021/vehicle.php",
+    title: "2021 ESCALADE",
+    subTitle: "NEVER STOP ARRIVING",
+    description: "THE NEXT GENERATION 2021 ESCALADE & ESCALADE ESV",
+    btnDescription: "ESCALADE SUVS",
     imgUrl: "./images/mainBanner4.jpg",
-    imgAlt: "메인 이벤트4 배경",
+    imgAlt: "ESCALADE 대표 이미지",
   },
   {
-    bannerLink: "https://www.cadillac.co.kr/board/event_view.php?idx=61",
-    title: "5 2020 Kadillac XT5",
-    subTitle: "CROSSOVER STANDAR",
-    description: "WHY NOT A CROSSOVER THAT BREAKS ALL RULES?",
-    btnDescription: "XT5 SUV",
+    bannerLink: "https://www.cadillac.co.kr/vehicle/ct4/vehicle.php",
+    title: "2020 CT4",
+    subTitle: "THE AGILE",
+    description: "",
+    btnDescription: "CT4 SEDANS",
     imgUrl: "./images/mainBanner5.jpg",
-    imgAlt: "메인 이벤트5 배경",
+    imgAlt: "CT4 대표 이미지",
   },
 ];
 // lineUp
@@ -104,8 +104,12 @@ const carouselRender = ($carousel, carouselBanner) => {
       <a href="${bannerLink}">
         <div class="container">
           <h3 class="h1">${title}</h3>
-          <p class="h5">${subTitle}</p>
-          <p class="description subTitle">${description}</p>
+          ${subTitle ? `<p class="h5">${subTitle}</p>` : ""}
+          ${
+            description
+              ? `<p class="description subTitle">${description}</p>`
+              : ""
+          }
           <button type="button" class="btn xLarge outline white btnMore">${btnDescription} 자세히보기</button>
         </div>
         <img src="${imgUrl}" alt="${imgAlt}">
@@ -131,20 +135,6 @@ const lineUpRender = ($lineUp, lineUpBanner) => {
     )
     .join("")}`;
 };
-
-// 무한 캐러셀 구현
-// 첫번째 배너에서 앞으로 가는 버튼을 클릭하면 가상으로 복사한 마지막 배너로 이동한 뒤에 곧 바로 실제의 마지막 배너로 이동한다.
-// 마지막 배너에서 뒤로 가는 버튼을 클릭하면 가상으로 복사한 첫번째 배너로 이동한 뒤에 곧 바로 실제의 첫번째 배너로 이동한다.
-// 해야 할 것!
-// 1. 첫번째 슬라이드가 마지막 슬라이드는 클론해야 한다.
-// 2. 현재 슬라이드가 어떤 슬라이드인지를 확인 할 수 있어야 한다.
-// 3. 현재 슬라이드가 가상으로 복사한 슬라이드 인 경우 듀레이션(이동 효과가 적용되는 시간)이 없어야 한다. (그래야 가상의 슬라이드에서 실제의 슬라이드로 이동하는 모습이 보이지 않는다.)
-// 4. 현재 슬라이드가 변경중이라면 버튼은 클릭되지 않아야 한다.
-// 5. 버튼을 클릭하지 않아도 자동으로 슬라이드가 돌아가고 있어야 한다.
-
-// 인디케이터
-// 1. 버튼을 누르면 해당 슬라이드로 부드럽게 이동한다.
-// 2. 인디케이터의 모양이 애니메이션으로 부드럽게 적용된다.
 
 let currentBanner = 0;
 let isMoving = false;
