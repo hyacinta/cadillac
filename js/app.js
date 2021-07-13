@@ -1,5 +1,6 @@
 // DOMS
 const $body = document.querySelector("body");
+const $nav = document.querySelector("nav");
 const $menu = document.querySelector(".menu");
 const $search = document.querySelector(".search");
 const $searchInput = document.querySelector(".searchInput");
@@ -11,6 +12,9 @@ const $promotion = document.querySelector(".promotion ul");
 const $mapView = document.querySelector(".mapView");
 const $storeList = document.querySelector(".storeList");
 // data
+
+const windowScroll = true;
+
 // carousel banner
 const carouselBanner = [
   {
@@ -255,6 +259,7 @@ const carouselRender = ($carousel, carouselBanner) => {
     )
     .join("")}`;
 };
+
 const lineUpRender = ($lineUp, lineUpBanner) => {
   $lineUp.innerHTML = `${lineUpBanner
     .map(
@@ -289,6 +294,7 @@ const bannerRender = ($promotion, bannerData) => {
     )
     .join("")}`;
 };
+
 const showroomRender = ($storeList, locationListData) => {
   $storeList.innerHTML = `${locationListData
     .map(
@@ -310,6 +316,9 @@ const showroomRender = ($storeList, locationListData) => {
     .join("")}`;
 };
 
+// const stopScroll = () => {
+
+// };
 let currentBanner = 0;
 let isMoving = false;
 const duration = 600;
@@ -357,7 +366,12 @@ window.onload = () => {
 // event binding
 
 // nav open
-$menu.onclick = ({ target }) => {
+$nav.onclick = ({ target }) => {
+  if (target.classList.contains("btnMenu")) {
+    target.parentElement.classList.toggle("active");
+
+    // 스크롤 중지 이벤트 만들 것!
+  }
   if (!target.matches(".menu > li > button")) return;
   [...$menu.children].forEach((item) =>
     item.classList.toggle("active", target.parentNode === item)
