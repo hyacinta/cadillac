@@ -1,7 +1,6 @@
 /* header */
 
 .header {
-  position: relative;
   border-top: 12px solid #9c120b;
   border-bottom: 1px solid #cecece;
 }
@@ -10,11 +9,10 @@
   align-items: center;
 }
 .logo {
-  position: absolute;
-  top: -2px;
   flex-shrink: 0;
   width: 80px;
   height: 72px;
+  margin-top: -6px;
   margin-bottom: -7px;
   padding-top: 70px;
   background: #fff url("../images/logo.png") no-repeat center;
@@ -32,7 +30,9 @@
   color: #202020;
   font-weight: 500;
 }
-
+nav .btnMenu {
+  display: none;
+}
 .menu li > button,
 .menu a {
   position: relative;
@@ -587,4 +587,106 @@ section .sectionTitle {
 }
 .copyright li {
   padding: 0 1em;
+}
+
+/* nav 태블릿, 모바일 */
+@media all and (max-width: 1079px) {
+  header .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .logo {
+    margin-top: -3px;
+    justify-items: flex-start;
+    z-index: 5000;
+  }
+  .header .nav {
+    display: flex;
+    justify-content: flex-end;
+    order: 1;
+    flex-grow: 0;
+  }
+  nav .btnMenu {
+    position: relative;
+    display: flex;
+    width: 40px;
+    height: 38px;
+    padding: 10px 6px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    z-index: 9999;
+  }
+  nav .btnMenu span {
+    width: 24px;
+    height: 2px;
+    background-color: #202020;
+    border-radius: 2px;
+  }
+
+  nav.active .btnMenu span:nth-child(1) {
+    display: none;
+  }
+  nav.active .btnMenu span:first-child {
+  }
+  nav.active .btnMenu span:last-child {
+  }
+  .menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 24px;
+    padding-top: 68px;
+    background-color: #9c120b;
+    z-index: 9000;
+  }
+  nav.active .menu {
+    display: unset;
+  }
+  .menu > li {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .menu li > button,
+  .menu a {
+    padding: 1em 0.5em;
+    color: #aaa;
+  }
+  .menu li:hover > button {
+    color: #fff;
+  }
+
+  .menu .active .subMenu {
+    position: unset;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    background-color: unset;
+    border: none;
+  }
+  .menu a {
+    padding: 0.3em;
+  }
+  .subMenuTitle {
+    padding-left: 0;
+    font-size: 1.6rem;
+  }
+  .subMenu li a {
+    padding-left: 1rem;
+    font-size: 1.4rem;
+  }
+  .search {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 4px;
+    order: 0;
+    flex-grow: 1;
+  }
+  .search input {
+    width: 0;
+  }
 }

@@ -1,5 +1,7 @@
 /* common */
-html {font-size: 10px;}
+html {
+  font-size: 10px;
+}
 
 .a11yHidden {
   position: absolute;
@@ -11,65 +13,145 @@ html {font-size: 10px;}
 }
 ::selection {
   color: #fff;
-  background: rgba(73, 86, 121, .7);
+  background: rgba(73, 86, 121, 0.7);
 }
 
 /* text color */
-.colorMainLight {color: #DB615B;}
-.colorMain {color: #9C120B;}
-.colorMainDeep {color: #DB615B;}
-.colorSubLight {color: #8493BB;}
-.colorSub {color: #495679;}
-.colorSubDeep {color: #1D263E;}
-.colorPoint1 {color: #B5A268;}
-.colorPoint2 {color: #FFDC88;}
+.colorMainLight {
+  color: #db615b;
+}
+.colorMain {
+  color: #9c120b;
+}
+.colorMainDeep {
+  color: #db615b;
+}
+.colorSubLight {
+  color: #8493bb;
+}
+.colorSub {
+  color: #495679;
+}
+.colorSubDeep {
+  color: #1d263e;
+}
+.colorPoint1 {
+  color: #b5a268;
+}
+.colorPoint2 {
+  color: #ffdc88;
+}
 
 /* typography */
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 1.6rem;
   color: #707070;
   letter-spacing: -0.025em;
   line-height: 1.5;
 }
-.h1, .h2, .h3 {font-weight: 100;}
-.h4, .h5 {font-weight: 400;}
-.h6, .subtitle1 {font-weight: 500;}
-.h1 {font-size: 8rem;}
-.h2 {font-size: 6.4rem;}
-.h3 {font-size: 5.2rem;}
-.h4 {font-size: 4rem;}
-.h5 {font-size: 3.2rem;}
-.h6 {font-size: 2.4rem;}
-.subTitle1 {font-size: 2rem;}
+.h1,
+.h2,
+.h3 {
+  font-weight: 100;
+}
+.h4,
+.h5 {
+  font-weight: 400;
+}
+.h6,
+.subtitle1 {
+  font-weight: 500;
+}
+.h1 {
+  font-size: 8rem;
+}
+.h2 {
+  font-size: 6.4rem;
+}
+.h3 {
+  font-size: 5.2rem;
+}
+.h4 {
+  font-size: 4rem;
+}
+.h5 {
+  font-size: 3.2rem;
+}
+.h6 {
+  font-size: 2.4rem;
+}
+.subTitle1 {
+  font-size: 2rem;
+}
 .subTitle2 {
   font-size: 1.6rem;
   font-weight: 700;
 }
-.body1 {font-size: 1.6rem;}
-.body2 {font-size: 1.4rem;}
+.body1 {
+  font-size: 1.6rem;
+}
+.body2 {
+  font-size: 1.4rem;
+}
 
-.caption {font-size: 1.2rem;}
-.overline {font-size: 1rem;}
+.caption {
+  font-size: 1.2rem;
+}
+.overline {
+  font-size: 1rem;
+}
 
 /* PC (해상도 1080px ~) */
 @media all and (min-width: 1080px) {
-  h1, h2, h3, h4, h5, h6, p {margin-bottom: 2.4rem;}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: 2.4rem;
+  }
 }
 
 /* 태블릿 가로 (해상도 768px ~ 1079px) */
 @media all and (min-width: 768px) and (max-width: 1079px) {
-  h1, h2, h3, h4, h5, h6, p {margin-bottom: 2rem;}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: 2rem;
+  }
 }
 
 /* 모바일 가로, 태블릿 세로 (해상도 480px ~ 767px) */
-@media all and (max-width:767px) {
-  h1, h2, h3, h4, h5, h6, p {margin-bottom: 1.6rem;}
+@media all and (max-width: 767px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: 1.6rem;
+  }
 }
 
 /* 모바일 세로 (해상도 ~ 479px) */
 @media all and (max-width: 479px) {
-  h1, h2, h3, h4, h5, h6, p {margin-bottom: 1.2rem;}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: 1.2rem;
+  }
 }
 
 /* button */
@@ -90,10 +172,13 @@ body {
 }
 .btn.outline.white {
   color: #fff;
-  border-color: rgba(255, 255, 255, 1)
+  border-color: rgba(255, 255, 255, 1);
 }
 
 /* pc, 태블릿 가로 (해상도 768px ~ ) */
 @media all and (min-width: 768px) {
-  .btn-small, .btn-large {line-height: 1.5;}
+  .btn-small,
+  .btn-large {
+    line-height: 1.5;
+  }
 }
