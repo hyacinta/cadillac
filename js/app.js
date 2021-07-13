@@ -367,9 +367,14 @@ window.onload = () => {
 
 // nav open
 $nav.onclick = ({ target }) => {
-  if (target.classList.contains("btnMenu")) {
-    target.parentElement.classList.toggle("active");
-
+  if (
+    target.classList.contains("btnMenu") ||
+    target.classList.contains("menuIconBar")
+  ) {
+    const $navMenuBox = target.classList.contains("btnMenu")
+      ? target.parentElement
+      : target.parentElement.parentElement;
+    $navMenuBox.classList.toggle("active");
     // 스크롤 중지 이벤트 만들 것!
   }
   if (!target.matches(".menu > li > button")) return;

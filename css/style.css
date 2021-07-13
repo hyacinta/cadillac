@@ -615,20 +615,25 @@ section .sectionTitle {
     flex-wrap: wrap;
     align-content: space-between;
     z-index: 9999;
+    overflow: hidden;
   }
   nav .btnMenu span {
     width: 24px;
     height: 2px;
+    margin: auto;
     background-color: #202020;
     border-radius: 2px;
-  }
-
-  nav.active .btnMenu span:nth-child(1) {
-    display: none;
+    transition: transform ease 400ms;
+    transition: opacity ease 0;
   }
   nav.active .btnMenu span:first-child {
+    transform: translateY(8px) rotate(45deg);
+  }
+  nav.active .btnMenu span:nth-child(2) {
+    opacity: 0;
   }
   nav.active .btnMenu span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
   }
   .menu {
     position: absolute;
