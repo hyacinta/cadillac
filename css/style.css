@@ -591,6 +591,7 @@ section .sectionTitle {
 
 /* nav 태블릿, 모바일 */
 @media all and (max-width: 1079px) {
+  /* navigation */
   header .container {
     display: flex;
     justify-content: space-between;
@@ -626,6 +627,9 @@ section .sectionTitle {
     transition: transform ease 400ms;
     transition: opacity ease 0;
   }
+  nav.active .btnMenu span {
+    background-color: #ddd;
+  }
   nav.active .btnMenu span:first-child {
     transform: translateY(8px) rotate(45deg);
   }
@@ -646,7 +650,7 @@ section .sectionTitle {
     height: 100vh;
     padding: 24px;
     padding-top: 68px;
-    background-color: #9c120b;
+    background-color: #1d263e;
     z-index: 9000;
   }
   nav.active .menu {
@@ -665,7 +669,10 @@ section .sectionTitle {
   .menu li:hover > button {
     color: #fff;
   }
-
+  .menu .active > button::after,
+  .menu li.active > a::after {
+    display: none;
+  }
   .menu .active .subMenu {
     position: unset;
     padding: 0;
@@ -677,8 +684,7 @@ section .sectionTitle {
     padding: 0.3em;
   }
   .subMenuTitle {
-    padding-left: 0;
-    font-size: 1.6rem;
+    display: none;
   }
   .subMenu li a {
     padding-left: 1rem;
@@ -693,5 +699,41 @@ section .sectionTitle {
   }
   .search input {
     width: 0;
+  }
+
+  /* visual */
+  .visual .container {
+    padding-top: 1.6rem;
+    padding-left: 5.6rem;
+  }
+  .visual .btnNext,
+  .visual .btnPrev {
+    width: 24px;
+  }
+  .visual .btnNext {
+    right: 16px;
+  }
+  .visual .btnPrev {
+    left: 16px;
+  }
+  .visual .indicator {
+    display: none;
+  }
+  .visual .h5 {
+    font-size: 1.6rem;
+  }
+  .carousel .container .description,
+  .carVisual .container .description {
+    display: none;
+  }
+  .carousel .container .btnMore {
+    display: none;
+  }
+  .quickBanner h3 {
+    font-size: 1.6rem;
+  }
+  .map .sectionTitle {
+    padding: 8px;
+    font-size: 2rem;
   }
 }
