@@ -756,6 +756,9 @@ section .sectionTitle {
   .lineUp img {
     width: 80%;
   }
+  .sns .snsLink {
+    display: none;
+  }
   .quickBanner {
     padding-bottom: 0.8rem;
   }
