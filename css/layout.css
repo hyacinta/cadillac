@@ -198,16 +198,28 @@
 /* 모바일 세로 (해상도 ~ 479px) */
 @media all and (max-width: 479px) {
   .xs-col-1 {
-    width: 50%;
+    width: 25%;
   }
   .xs-col-2 {
+    width: 50%;
+  }
+  .xs-col-3 {
+    width: 75%;
+  }
+  .xs-col-4 {
     width: 100%;
   }
 
   .xs-prefix-1 {
-    margin-left: 50%;
+    margin-left: 20%;
   }
   .xs-prefix-2 {
+    margin-left: 50%;
+  }
+  .xs-prefix-3 {
+    margin-left: 75%;
+  }
+  .xs-prefix-4 {
     margin-left: 100%;
   }
 }

@@ -1,59 +1,128 @@
 /* header */
-
 .header {
   border-top: 12px solid #9c120b;
   border-bottom: 1px solid #cecece;
 }
-.header > .container {
+.header .container {
   display: flex;
   align-items: center;
 }
 .logo {
+  position: absolute;
+  top: 10px;
   flex-shrink: 0;
   width: 80px;
   height: 72px;
-  margin-top: -6px;
-  margin-bottom: -7px;
-  padding-top: 70px;
+  padding-top: 7rem;
   background: #fff url("../images/logo.png") no-repeat center;
   border: 1px solid #cecece;
   overflow: hidden;
-  z-index: 9999;
+  z-index: 9000;
 }
-.header .nav {
+
+/* navigation */
+.nav {
   flex-grow: 1;
+}
+.btnNavOpen {
+  display: none;
 }
 .menu {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: #202020;
-  font-weight: 500;
 }
-nav .btnMenu {
-  display: none;
-}
-.menu li > button,
-.menu a {
+.btnSubMenuOpen,
+.subMenu a {
   position: relative;
+}
+.btnSubMenuOpen {
   display: block;
   margin: 0 1em;
   padding: 1.5em 0.5em;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: #666;
 }
+.subMenu {
+  position: absolute;
+  left: 0;
+  display: none;
+  width: 100vw;
+  padding: 2em 1em 1em;
+  background-color: #fff;
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+  overflow: hidden;
+  z-index: 7000;
+}
+.subMenu li {
+  margin-bottom: 0.5em;
+}
+.subMenuTitle {
+  margin-bottom: 1em;
+  padding-left: 0.5em;
+}
+.subMenu a {
+  display: inline-block;
+  margin: 0;
+  padding: 0.25em 0.5em;
+  border-bottom: 1px solid transparent;
+}
+.btnSubMenuOpen::after,
+.subMenu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  margin: auto;
+  height: 2px;
+  background-color: transparent;
+  transition: all 200ms ease;
+}
+
+/* navigation active & hover */
+.btnSubMenuOpen:hover,
+.active .btnSubMenuOpen,
+.subMenu a:hover,
+.subMenu .active a {
+  color: #202020;
+}
+.btnSubMenuOpen:hover::after,
+li.active .btnSubMenuOpen::after,
+.subMenu a:hover::after {
+  background-color: #9c120b;
+  transition: all 200ms ease;
+}
+li.active .btnSubMenuOpen::after {
+  height: 4px;
+}
+li.active .subMenu {
+  display: block;
+  animation: mouseOn 400ms ease;
+}
+@keyframes mouseOn {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: initial;
+    opacity: 1;
+  }
+}
+
+/* search */
 .search {
   position: relative;
-  margin-left: 8px;
+  margin-left: 0.5em;
 }
 .search input {
-  width: 40px;
-  line-height: 1.5;
+  width: 0;
   border: 1px solid rgba(206, 206, 206, 0);
   background-color: transparent;
   transition: all 200ms ease;
-  outline: none;
+  overflow: hidden;
 }
 .search.on input {
   width: 200px;
@@ -77,149 +146,64 @@ nav .btnMenu {
 .search.on .btnSearchOn {
   z-index: -10;
 }
-.menu li > button:hover,
-.menu .active > button,
-.menu .active > a,
-.menu a:hover {
-  color: #202020;
-}
-.menu li > button::after,
-.menu li > a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
-  width: 100%;
-  margin: auto;
-  height: 2px;
-  background-color: transparent;
-  transition: all 200ms ease;
-}
-.menu li > button:hover::after,
-.menu .active > button::after,
-.menu .active > a::after,
-.menu > li > a:hover::after {
-  background-color: #aaa;
-  transition: all 200ms ease;
-}
-.menu li.active > button::after,
-.menu li.active > a::after {
-  height: 4px;
-  background-color: #9c120b;
-  transition: all 200ms ease;
-}
-.menu .active .subMenu {
-  display: block;
-  padding: 2em 1em 1em;
-  animation: mouseOn 200ms ease-in-out;
-}
-.subMenu {
-  position: absolute;
-  top: 67px;
-  left: 0;
-  display: none;
-  width: 100vw;
-  padding: 0 1em;
-  background-color: #fff;
-  border-top: 1px solid #cecece;
-  border-bottom: 1px solid #cecece;
-  z-index: 9000;
-  overflow: hidden;
-}
-.subMenuTitle {
-  margin-bottom: 1.6rem;
-  padding-left: 0.5em;
-  color: #202020;
-}
-.subMenu li {
-  margin-bottom: 0.5em;
-}
-.subMenu a {
-  display: inline-block;
-  margin: 0;
-  padding: 0.25em 0.5em;
-  border-bottom: 1px solid transparent;
-}
-.subMenu a:hover {
-  border-color: #9c120b;
-}
-@keyframes mouseOn {
-  0% {
-    height: 0;
-    opacity: 0;
-  }
-  100% {
-    height: initial;
-    opacity: 1;
-  }
-}
 
 /* visual */
 .visual {
   position: relative;
   width: 100vw;
   border-bottom: 1px solid #cecece;
-  overflow: hidden;
 }
-.visual .carousel {
+.carousel {
+  display: flex;
+  flex-wrap: wrap;
   width: 700vw;
-  font-size: 0;
   --currentBanner: 0;
   --duration: 0;
   transform: translateX(calc(var(--currentBanner) * -100vw));
   transition: transform calc(var(--duration) * 1ms) ease-out;
 }
+
 .carousel li {
-  display: inline-block;
   width: 100vw;
-  font-size: 1.6rem;
-  text-align: center;
+  overflow: hidden;
+  background-image: url("../images/mainBanner1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.carousel li a {
+.carousel a {
   position: relative;
   display: block;
-  padding-top: 40%;
+  float: none;
+  margin: auto;
+  /* padding-top: 30%; 캐러셀 높이*/
   overflow: hidden;
 }
-.carousel .container,
-.carousel img {
+.carousel .container {
   position: absolute;
   top: 0;
   right: 0;
-  left: 0;
   bottom: 0;
-  margin: auto;
-}
-.carousel .container,
-.carVisual .container {
+  left: 0;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  padding-top: 80px;
-  z-index: 100;
-}
-.carousel img,
-.carVisual img {
   width: 100%;
+  height: 100%;
+  margin: auto;
+  padding-top: 8rem;
 }
-.carousel .container h3,
-.carousel .container p,
-.carVisual .container h3,
-.carVisual .container p {
+.carousel h3,
+.carousel p {
   width: 100%;
   margin-bottom: 0;
   color: #fff;
-  text-align: left;
   text-shadow: 0 0 16px rgba(0, 0, 0, 1);
 }
-.carousel .container .description,
-.carVisual .container .description {
-  font-size: 2rem;
+.carousel .description {
   order: -1;
 }
-.carousel .container .btnMore {
+.carousel .btnMore {
   margin-top: 4rem;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
@@ -249,13 +233,6 @@ nav .btnMenu {
 .visual .btnNext {
   right: 40px;
   background-image: url("../images/ico_arrowR.png");
-}
-
-.visual .btnPrev.disabled,
-.visual .btnNext.disabled {
-  opacity: 0.2;
-  pointer-events: none;
-  cursor: not-allowed;
 }
 .visual .indicator {
   right: 0;
@@ -301,24 +278,18 @@ div.map {
   padding-top: 5.6rem;
   padding-bottom: 5.6rem;
 }
-section .sectionTitle {
-  color: #202020;
-}
 
 /* lineUp */
 .lineUp ul {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 8px;
+  justify-content: space-around;
+  margin-top: 0.5em;
   text-align: center;
-}
-.lineUp .carName {
-  margin: 1.6rem auto 0;
-  font-weight: 700;
-  color: #202020;
 }
 
 /* promotion */
+
 .promotion {
   background-color: #f6f6f6;
 }
@@ -333,8 +304,7 @@ section .sectionTitle {
 }
 .promotion1 img,
 .promotion2 img,
-.promotion .division,
-.promotion .description {
+.promotion .sectionTitle {
   position: absolute;
 }
 .promotion1 img,
@@ -346,28 +316,18 @@ section .sectionTitle {
   width: 100%;
   margin: auto;
 }
-.promotion .division {
+.promotion .sectionTitle {
   top: 0;
   right: 0;
   display: inline-block;
-  padding: 0 0.5em;
-  font-size: 2.4rem;
-  font-weight: 500;
+  padding: 0.2em 0.7em;
   color: #fff;
   background-color: #b5a268;
   z-index: 500;
 }
-.promotion .description {
-  top: 16px;
-  left: 16px;
-  font-size: 3.2rem;
-  color: #fff;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  z-index: 500;
-}
 
 /* SNS */
-.sns > .container {
+.sns .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -375,12 +335,12 @@ section .sectionTitle {
 .sns .sectionTitle {
   flex-grow: 1;
 }
-.sns .snsLink {
+.snsLink {
   align-self: flex-end;
   display: flex;
-  margin-bottom: 24px;
+  margin-bottom: 2.4rem;
 }
-.sns .snsLink > li {
+.snsLink > li {
   width: 32px;
   height: 32px;
   margin-left: 8px;
@@ -390,7 +350,22 @@ section .sectionTitle {
   background-repeat: no-repeat;
   overflow: hidden;
 }
-.sns .snsPost {
+.sns .icon {
+  background-repeat: no-repeat;
+}
+.sns .icon.insta {
+  background-image: url("../images/ico_insta.png");
+}
+.sns .icon.fBook {
+  background-image: url("../images/ico_fBook.png");
+}
+.sns .icon.ytube {
+  background-image: url("../images/ico_yTube.png");
+}
+.sns .icon.twitter {
+  background-image: url("../images/ico_twitter.png");
+}
+.snsPost {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -429,25 +404,13 @@ section .sectionTitle {
   background-repeat: no-repeat;
   z-index: 100;
 }
-.sns .icon.insta {
-  background-image: url("../images/ico_insta.png");
-}
-.sns .icon.fBook {
-  background-image: url("../images/ico_fBook.png");
-}
-.sns .icon.ytube {
-  background-image: url("../images/ico_yTube.png");
-}
-.sns .icon.twitter {
-  background-image: url("../images/ico_twitter.png");
-}
 
 /* quickBanner */
 .quickBanner {
   padding-top: 4rem;
   padding-bottom: 4rem;
-  background-color: #f6f6f6;
   text-align: center;
+  background-color: #f6f6f6;
 }
 .quickBanner a {
   display: inline-flex;
@@ -457,13 +420,14 @@ section .sectionTitle {
 .quickBanner h3 {
   width: 100%;
   margin-bottom: 0;
+  font-weight: 400;
 }
 .quickBanner .icon {
   order: -1;
   display: block;
   width: 60px;
   height: 60px;
-  margin-bottom: 1.6em;
+  margin-bottom: 1.5em;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -480,7 +444,7 @@ section .sectionTitle {
   background-image: url("../images/ico_drive.png");
 }
 
-/* 전시장 찾기 */
+/* map */
 .map {
   display: flex;
   flex-wrap: wrap;
@@ -491,78 +455,95 @@ section .sectionTitle {
   border: 1px solid #cecece;
   order: -1;
 }
-.map .storeSearch {
+.map .mapInfo {
   padding: 0;
   background-color: #f9f9f9;
+  border-width: 1px 1px 1px 0;
+  border-color: #cecece;
+  border-style: solid;
 }
 .map .sectionTitle {
   margin-bottom: 0;
-  padding: 16px 24px 20px;
+  padding: 0.4em 1em 0.5em;
   background-color: #333;
   color: #fff;
   text-align: center;
+  font-weight: 300;
 }
 .map .sectionDescription {
   margin-bottom: 0;
-  padding: 16px;
+  padding: 0.5em 1em;
 }
-.map .storeList {
-  height: 379px;
-  padding: 0 16px 16px 16px;
+.locationList {
+  height: 418px;
+  padding: 1em;
   overflow-y: scroll;
 }
-.map .location {
+.locationTitle {
   margin-bottom: 0;
+  font-weight: 400;
   color: #1d263e;
 }
-.map .locationList {
-  margin-bottom: 16px;
+.showroomList {
+  margin-bottom: 1em;
   border-bottom: 2px solid #aaa;
 }
-.map .locationList > li {
+.showroomList:last-child {
+  margin-bottom: 0;
+  border: none;
+}
+.showroomList li {
   display: flex;
   flex-wrap: wrap;
-  padding: 16px 0;
+  padding: 1em 0;
   border-bottom: 1px dashed #ccc;
+  font-size: 1.4rem;
 }
-.map .locationList > li:last-child {
+.showroomList li:last-child {
+  padding-bottom: 0;
   border-bottom: none;
 }
-.map .storeName {
-  margin-bottom: 8px;
+.showroomList .showroomName {
+  margin-bottom: 0.5em;
+  font-weight: 600;
   color: #1d263e;
   order: -1;
 }
-.map .address,
-.map .tel,
-.map .fax {
-  margin: 0 4px 4px;
+.showroomList .address {
+  width: 100%;
 }
-.map .storeList span {
-  font-weight: bold;
+.showroomList .address,
+.showroomList .tel,
+.showroomList .fax {
+  margin: 0 0.25em 0.25em;
 }
-.map .btnMapView {
-  height: 28px;
-  padding: 3px 8px 0px;
-  margin-top: -3px;
-  margin-left: 8px;
+.showroomList span {
+  font-weight: 500;
+  color: #202020;
+}
+.showroomList .btnMapView {
+  padding: 0.5em 0.75em;
+  margin-top: -4px;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
   font-size: 1.4rem;
   color: #fff;
   background-color: #9c120b;
   border-radius: 4px;
   order: -1;
 }
+
 /* footer */
 .footer {
-  padding: 80px 0;
+  padding: 8rem 0;
   background-color: #333;
+  color: #aaa;
 }
-.sitemap h3 {
-  font-size: 1.6rem;
+.footer h3 {
   color: #fff;
 }
 .sitemap > ul,
-.copyright > ul {
+.copyright ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -577,19 +558,21 @@ section .sectionTitle {
 }
 .sitemap .row li {
   width: 20%;
-  color: #aaa;
 }
 .copyright {
   margin-top: 1.6rem;
   padding-top: 4rem;
   border-top: 1px solid #444;
-  color: #aaa;
+}
+.copyright ul {
+  justify-content: center;
 }
 .copyright li {
   padding: 0 1em;
 }
 
-/* nav 태블릿, 모바일 */
+/* 태블릿, 모바일 */
+
 @media all and (max-width: 1079px) {
   section.lineUp,
   section.promotion,
@@ -602,24 +585,28 @@ section .sectionTitle {
     padding-top: 3.2rem;
     padding-bottom: 3.2rem;
   }
-
-  /* navigation */
-  header .container {
-    display: flex;
-    justify-content: space-between;
+  /* Mobile 버전에서 숨기기 */
+  .menu,
+  .menu button::after,
+  .menu a::after,
+  .subMenuTitle,
+  .footer .sitemap,
+  .sns .snsLink,
+  .footer .sitemap {
+    display: none;
   }
+  /* header */
   .logo {
-    margin-top: -3px;
-    justify-items: flex-start;
+    position: static;
+    margin: 0;
+    border-color: transparent;
     z-index: 5000;
   }
-  .header .nav {
-    display: flex;
-    justify-content: flex-end;
+  .nav {
     order: 1;
     flex-grow: 0;
   }
-  nav .btnMenu {
+  .btnNavOpen {
     position: relative;
     display: flex;
     width: 40px;
@@ -630,7 +617,7 @@ section .sectionTitle {
     z-index: 9999;
     overflow: hidden;
   }
-  nav .btnMenu span {
+  .btnNavOpen span {
     width: 24px;
     height: 2px;
     margin: auto;
@@ -639,80 +626,17 @@ section .sectionTitle {
     transition: transform ease 400ms;
     transition: opacity ease 0;
   }
-  nav.active .btnMenu span {
+  .active .btnNavOpen span {
     background-color: #ddd;
   }
-  nav.active .btnMenu span:first-child {
+  .active .btnNavOpen span:first-child {
     transform: translateY(8px) rotate(45deg);
   }
-  nav.active .btnMenu span:nth-child(2) {
+  .active .btnNavOpen span:nth-child(2) {
     opacity: 0;
   }
-  nav.active .btnMenu span:last-child {
+  .active .btnNavOpen span:last-child {
     transform: translateY(-8px) rotate(-45deg);
-  }
-  .menu {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: none;
-    width: 100vw;
-    height: 100vh;
-    padding: 24px;
-    padding-top: 68px;
-    background-color: #1d263e;
-    z-index: 9000;
-  }
-  nav.active .menu {
-    display: unset;
-  }
-  .menu > li {
-    width: 100%;
-    color: rgba(255, 255, 255, 0.7);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  }
-  .menu li > button,
-  .menu a {
-    padding: 1em 0.5em;
-    color: #aaa;
-  }
-  .menu li:hover > button {
-    color: #fff;
-  }
-  .menu .active > button::after,
-  .menu li.active > a::after,
-  .menu li > button:hover::after,
-  .menu .active > button::after,
-  .menu .active > a::after,
-  .menu > li > a:hover::after {
-    display: none;
-  }
-  .menu .active .subMenu {
-    position: unset;
-    padding: 0;
-    padding-bottom: 0.5rem;
-    background-color: unset;
-    border: none;
-  }
-  .menu a {
-    padding: 0.3em;
-  }
-  .menu li > button:hover,
-  .menu .active > button,
-  .menu .active > a,
-  .menu a:hover {
-    color: #fff;
-  }
-  .subMenuTitle {
-    display: none;
-  }
-  .subMenu li a {
-    padding-left: 1rem;
-  }
-  .subMenu a:hover {
-    border-color: rgba(0, 0, 0, 0);
   }
   .search {
     display: flex;
@@ -721,44 +645,82 @@ section .sectionTitle {
     order: 0;
     flex-grow: 1;
   }
-  .search input {
-    width: 0;
+  .menu li > button {
+    padding: 1em 0.5em;
+  }
+  .menu a {
+    padding: 0.3em 0;
   }
 
-  /* visual */
-  .visual .container {
-    padding-top: 1.6rem;
-    padding-left: 5.6rem;
+  /* menu active & hover */
+  .active .btnNavOpen span {
+    color: #aaa;
   }
-  .visual .btnNext,
-  .visual .btnPrev {
-    width: 24px;
+  .active .menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: unset;
+    width: 100vw;
+    height: 100vh;
+    padding: 24px;
+    padding-top: 68px;
+    color: #aaa;
+    background-color: #1d263e;
+    z-index: 9000;
   }
-  .visual .btnNext {
-    right: 16px;
+  .active .menu > li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.7);
   }
-  .visual .btnPrev {
-    left: 16px;
+  .menu li:hover > button,
+  .btnSubMenuOpen:hover,
+  .active .btnSubMenuOpen,
+  .subMenu a:hover,
+  .subMenu .active a,
+  .menu li > button:hover,
+  .menu .active > button,
+  .menu .active > a,
+  .menu a:hover {
+    color: #fff;
   }
-  .visual .indicator {
-    display: none;
+  .menu .active .subMenu {
+    position: unset;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    background-color: unset;
+    border: none;
   }
-  .visual .h5 {
-    font-size: 1.6rem;
+  .subMenu li a {
+    position: relative;
+    padding-left: 1em;
+    font-size: 1.4rem;
   }
-  .carousel .container .description,
-  .carVisual .container .description {
-    display: none;
+  .subMenu li a::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    content: "";
+    display: inline-block;
+    width: 0.4em;
+    height: 2px;
+    margin: auto 0;
+    margin-left: -1em;
+    background-color: #999;
   }
-  .carousel .container .btnMore {
-    display: none;
+  .subMenu a:hover {
+    border-color: rgba(0, 0, 0, 0);
   }
+
+  /* lineUp */
   .lineUp img {
     width: 80%;
   }
-  .sns .snsLink {
-    display: none;
-  }
+
+  /* quick Banner */
   .quickBanner {
     padding-bottom: 0.8rem;
   }
@@ -768,18 +730,11 @@ section .sectionTitle {
   .quickBanner .icon {
     width: 40px;
     height: 40px;
-    background-size: contain;
     margin-bottom: 0.5em;
-  }
-  .map .sectionTitle {
-    padding: 8px;
-    font-size: 2rem;
+    background-size: contain;
   }
   .footer {
     padding: 3.2rem 0;
-  }
-  .footer .sitemap {
-    display: none;
   }
   .footer .copyright {
     margin-top: 0;
@@ -791,5 +746,69 @@ section .sectionTitle {
   }
   .copyright .row li {
     margin-bottom: 0.5em;
+  }
+}
+
+/* PC (해상도 1080px ~) */
+
+@media all and (min-width: 2000px) {
+  .carousel a {
+    padding-top: 35%;
+  }
+}
+@media all and (min-width: 1080px) and (max-width: 1999px) {
+  .carousel a {
+    padding-top: 40%;
+  }
+}
+
+/* 태블릿 가로 (해상도 768px ~ 1079px) */
+
+@media all and (min-width: 768px) and (max-width: 1079px) {
+  .carousel a {
+    padding-top: 50%;
+  }
+}
+
+/* 모바일 가로, 태블릿 세로 (해상도 480px ~ 767px) */
+
+@media all and (max-width: 767px) {
+  .carousel a {
+    padding-top: 60%;
+  }
+  .carousel .container .btnMore,
+  .visual .indicator,
+  .carousel .container .description,
+  .carVisual .container .description {
+    display: none;
+  }
+  .visual .container {
+    padding-top: 3.2rem;
+    padding-left: 5.6rem;
+  }
+  .visual .btnNext,
+  .visual .btnPrev {
+    width: 32px;
+  }
+  .visual .btnNext {
+    right: 16px;
+  }
+  .visual .btnPrev {
+    left: 16px;
+  }
+}
+
+/* 모바일 세로 (해상도 ~ 479px) */
+
+@media all and (max-width: 479px) {
+  .carousel a {
+    padding-top: 75%;
+  }
+  .visual .container {
+    padding-top: 1.6rem;
+  }
+  .visual .btnNext,
+  .visual .btnPrev {
+    width: 24px;
   }
 }

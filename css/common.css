@@ -15,6 +15,11 @@ html {
   color: #fff;
   background: rgba(73, 86, 121, 0.7);
 }
+input {
+  line-height: 1.5;
+  outline: none;
+  background: #fff;
+}
 
 /* text color */
 .colorMainLight {
@@ -49,6 +54,16 @@ body {
   color: #707070;
   letter-spacing: -0.025em;
   line-height: 1.5;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.subTitle1,
+.subTitle2 {
+  color: #202020;
 }
 h1,
 h2,
@@ -167,6 +182,10 @@ h6,
 }
 
 /* button */
+button {
+  color: inherit;
+  font-size: inherit;
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -196,22 +215,66 @@ h6,
 }
 
 @media screen and (max-width: 1076px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5 {
+    font-weight: 400;
+  }
+  h6,
+  .h6,
+  .subtitle1 {
+    font-weight: 500;
+  }
+
+  h1,
   .h1 {
     font-size: 3.2rem;
   }
+  h2,
   .h2 {
     font-size: 3rem;
   }
+  h3,
   .h3 {
     font-size: 2.8rem;
   }
+  h4,
   .h4 {
     font-size: 2.6rem;
   }
+  h5,
   .h5 {
     font-size: 2.4rem;
   }
+  h6,
   .h6 {
     font-size: 2.2rem;
+  }
+
+  .subTitle1 {
+    font-size: 2rem;
+  }
+  .subTitle2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .body1 {
+    font-size: 1.6rem;
+  }
+  .body2 {
+    font-size: 1.4rem;
+  }
+
+  .caption {
+    font-size: 1.2rem;
+  }
+  .overline {
+    font-size: 1rem;
   }
 }

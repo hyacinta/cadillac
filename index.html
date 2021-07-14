@@ -32,14 +32,14 @@
         <h1 class="logo">KYUDILLAC</h1>
         <nav class="nav">
           <h2 class="a11yHidden">Navigation</h2>
-          <button class="btnMenu" type="button" title="메뉴 열고/닫기">
-            <span class="menuIconBar"></span>
-            <span class="menuIconBar"></span>
-            <span class="menuIconBar"></span>
+          <button class="btnNavOpen" type="button" title="메뉴 열고/닫기">
+            <span class="navIconBar"></span>
+            <span class="navIconBar"></span>
+            <span class="navIconBar"></span>
           </button>
           <ul class="menu">
             <li>
-              <button type="button">캐딜락하우스서울</button>
+              <button type="button" class="btnSubMenuOpen">캐딜락하우스서울</button>
               <section class="subMenu">
                 <div class="container row">
                   <div class="col-3 m-col-4 s-col-4 xs-col-2">
@@ -55,7 +55,7 @@
               </section>
             </li>
             <li>
-              <button type="button">차량정보</button>
+              <button type="button" class="btnSubMenuOpen">차량정보</button>
               <section class="subMenu">
                 <div class="container row">
                   <div class="col-3 m-col-4 s-col-4 xs-col-2">
@@ -79,7 +79,7 @@
               </section>
             </li>
             <li>
-              <button type="button">구매정보</button>
+              <button type="button" class="btnSubMenuOpen">구매정보</button>
               <section class="subMenu">
                 <div class="container row">
                   <div class="col-3 m-col-4 s-col-4 xs-col-2">
@@ -103,7 +103,7 @@
               </section>
             </li>
             <li>
-              <button type="button">뉴스</button>
+              <button type="button" class="btnSubMenuOpen">뉴스</button>
               <section class="subMenu">
                 <div class="container row">
                   <div class="col-3 m-col-4 s-col-4 xs-col-2">
@@ -117,7 +117,7 @@
               </section>
             </li>
             <li>
-              <button type="button">브랜드정보</button>
+              <button type="button" class="btnSubMenuOpen">브랜드정보</button>
               <section class="subMenu">
                 <div class="container row">
                   <div class="col-3 m-col-4 s-col-4 xs-col-2">
@@ -132,7 +132,7 @@
               </section>
             </li>
             <li>
-              <button type="button">HELP CENTER</button>
+              <button type="button" class="btnSubMenuOpen">HELP CENTER</button>
               <section class="subMenu">
                 <div class="container row">
                   <div class="col-3 m-col-4 s-col-4 xs-col-2">
@@ -147,7 +147,6 @@
               </section>
             </li>
           </ul>
-          <div class="dimmed_bg"></div>
         </nav>
         <section class="search">
           <label for="searchInput" class="a11yHidden">검색창</label>
@@ -159,63 +158,16 @@
     <main class="main">
       <section class="visual">
         <ul class="carousel">
-<!--           
-          <li class="banner1">
-            <a href="https://www.cadillac.co.kr/board/event_view.php?idx=61">
+          <!-- <li class="1">
+            <a class ="col-12 m-col-8 s-col-4 xs-col-2" href="https://www.cadillac.co.kr/board/event_view.php?idx=61">
               <div class="container">
-                <h3 class="h1">1 2020 Kadillac XT5</h3>
-                <p class="h5">CROSSOVER STANDARD</p>
-                <p class="description subTitle">WHY NOT A CROSSOVER THAT BREAKS ALL RULES?</p>
+                <h3 class="h1">2020 Kadillac XT5</h3>
+                <p class="h3">CROSSOVER STANDARD</p>
+                <p class="description subTitle1">WHY NOT A CROSSOVER THAT BREAKS ALL RULES?</p>
                 <button type="button" class="btn xLarge outline white btnMore">XT5 SUV 자세히보기</button>
               </div>
-              <img src="./images/mainBanner1.jpg" alt="메인 이벤트1 배경">
             </a>
-          </li>
-          <li class="banner2">
-            <a href="https://www.cadillac.co.kr/board/event_view.php?idx=61">
-              <div class="container">
-                <h3 class="h1">2 dfsasdf2020 Kadillac XT5</h3>
-                <p class="h5">CROSSOVER STANDARD</p>
-                <p class="description subTitle">WHY NOT A CROSSOVER THAT BREAKS ALL RULES?</p>
-                <button type="button" class="btn xLarge outline white btnMore">XT5 SUV 자세히보기</button>
-              </div>
-              <img src="./images/mainBanner2.jpg" alt="메인 이벤트2 배경">
-            </a>
-          </li>
-          <li class="banner3">
-            <a href="https://www.cadillac.co.kr/board/event_view.php?idx=61">
-              <div class="container">
-                <h3 class="h1">3 2020 Kadillac XT5</h3>
-                <p class="h5">CROSSOVER STANDARD</p>
-                <p class="description subTitle">WHY NOT A CROSSOVER THAT BREAKS ALL RULES?</p>
-                <button type="button" class="btn xLarge outline white btnMore">XT5 SUV 자세히보기</button>
-              </div>
-              <img src="./images/mainBanner3.jpg" alt="메인 이벤트3 배경">
-            </a>
-          </li>
-          <li class="banner4">
-            <a href="https://www.cadillac.co.kr/board/event_view.php?idx=61">
-              <div class="container">
-                <h3 class="h1">4 2020 Kadillac XT5</h3>
-                <p class="h5">CROSSOVER STANDARD</p>
-                <p class="description subTitle">WHY NOT A CROSSOVER THAT BREAKS ALL RULES?</p>
-                <button type="button" class="btn xLarge outline white btnMore">XT5 SUV 자세히보기</button>
-              </div>
-              <img src="./images/mainBanner4.jpg" alt="메인 이벤트4 배경">
-            </a>
-          </li>
-          <li class="banner5">
-            <a href="https://www.cadillac.co.kr/board/event_view.php?idx=61">
-              <div class="container">
-                <h3 class="h1">5 2020 Kadillac XT5</h3>
-                <p class="h5">CROSSOVER STANDARD</p>
-                <p class="description subTitle">WHY NOT A CROSSOVER THAT BREAKS ALL RULES?</p>
-                <button type="button" class="btn xLarge outline white btnMore">XT5 SUV 자세히보기</button>
-              </div>
-              <img src="./images/mainBanner5.jpg" alt="메인 이벤트5 배경">
-            </a>
-          </li>
-           -->
+          </li> -->
         </ul>
         <button type="button" class="moveBtn btnPrev">이전</button>
         <button type="button" class="moveBtn btnNext">다음</button>
@@ -228,55 +180,29 @@
         </ul>
       </section>
       <section class="lineUp container">
-        <h2 class="h4 sectionTitle">Kadillac LINEUP</h2>
+        <h2 class="sectionTitle h3">Kadillac LINEUP</h2>
         <ul class="row">
-<!--           
-          <li class="col-3 m-col-4 s-col-2 xs-col-2">
+          <!-- <li class="col-3 m-col-4 s-col-2 xs-col-2">
             <a href="https://www.cadillac.co.kr/vehicle/xt5/vehicle.php">
               <img src="./images/lineup1.png" alt="CROSSOVERS & SUVS 대표 차종">
-              <h3 class="carName">CROSSOVERS & SUVS</h3>
+              <h3 class="carName h6">CROSSOVERS & SUVS</h3>
             </a>
-          </li>
-          <li class="col-3 m-col-4 s-col-2 xs-col-2">
-            <a href="https://www.cadillac.co.kr/vehicle/xt5/vehicle.php">
-              <img src="./images/lineup2.png" alt="SEDANS 대표 차종">
-              <h3 class="carName">SEDANS</h3>
-            </a>
-          </li>
-          <li class="col-3 m-col-4 s-col-2 xs-col-2">
-            <a href="https://www.cadillac.co.kr/vehicle/xt5/vehicle.php">
-              <img src="./images/lineup1.png" alt="COUPES 대표 차종">
-              <h3 class="carName">COUPES</h3>
-            </a>
-          </li>
-          <li class="col-3 m-col-4 s-col-2 xs-col-2">
-            <a href="https://www.cadillac.co.kr/vehicle/xt5/vehicle.php">
-              <img src="./images/lineup2.png" alt="V-SERIES 대표 차종">
-              <h3 class="carName">V-SERIES</h3>
-            </a>
-          </li>
-           -->
+          </li> -->
         </ul>
       </section>
       <section class="promotion">
         <ul class="container row">
           <!-- <li class="promotion1 col-6 m-col-4 s-col-4 xs-col-2">
             <a href="https://www.cadillac.co.kr/vehicle/xt5/vehicle.php">
-              <h2 class="division">PROMOTION</h2>
+              <h2 class="sectionTitle h6">PROMOTION</h2>
               <img src="./images/promotion1.png" alt="2021 CTS 캐딜락 드림+ 프로모션">
-            </a>
-          </li>
-          <li class="promotion2 col-6 m-col-4 s-col-4 xs-col-2">
-            <a href="https://www.cadillac.co.kr/vehicle/xt5/vehicle.php">
-              <h2 class="division">EVENT</h2>
-              <img src="./images/promotion2.png" alt="TEST DRIVE THE BEST SEDAN DRIVE 시승 이벤트">
             </a>
           </li> -->
         </ul>
       </section>
       <section class="sns">
         <div class="container">
-          <h2 class="h4 sectionTitle">SOCIAL NETWORK</h2>
+          <h2 class="sectionTitle h3">SOCIAL NETWORK</h2>
           <ul class="snsLink">
             <li class="icon fBook"><a href="https://ko-kr.facebook.com/cadillac/">페이스북</a></li>
             <li class="icon twitter"><a href="https://twitter.com/Cadillac">트위터</a></li>
@@ -284,73 +210,73 @@
             <li class="icon ytube"><a href="https://youtube.com/channel/UCO2hq3YvqALcdNzDlfUj2Xg">유튜브</a></li>
           </ul>
           <ul class="snsPost row">
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://www.instagram.com/p/CJFrXF7HkjE/?utm_source=ig_web_copy_link">
                 <i class="icon insta">instagram Post</i>
                 <img src="./images/snsPost1.png" alt="snsPost1">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://www.facebook.com/cadillackorea/posts/2505902199705789">
                 <i class="icon fBook">facebook Post</i>
                 <img src="./images/snsPost2.png" alt="snsPost2">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://youtu.be/rEjLdpMZKrw">
                 <i class="icon ytube">youtube Post</i>
                 <img src="./images/snsPost3.png" alt="snsPost3">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://twitter.com/Cadillac/status/1311350657190944770?s=20">
                 <i class="icon twitter">twitter Post</i>
                 <img src="./images/snsPost4.png" alt="snsPost4">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://www.instagram.com/p/CJCtNR7h3cC/?utm_source=ig_web_copy_link">
                 <i class="icon insta">instagram Post</i>
                 <img src="./images/snsPost1.png" alt="snsPost5">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://www.facebook.com/cadillackorea/posts/2501993963429946">
                 <i class="icon fBook">facebook Post</i>
                 <img src="./images/snsPost2.png" alt="snsPost6">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://youtu.be/AjBhFe61DM4">
                 <i class="icon ytube">youtube Post</i>
                 <img src="./images/snsPost3.png" alt="snsPost7">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://twitter.com/Cadillac/status/1341474754767835136?s=20">
                 <i class="icon twitter">twitter Post</i>
                 <img src="./images/snsPost4.png" alt="snsPost8">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://www.instagram.com/p/CJCtEOmFYOK/?utm_source=ig_web_copy_link">
                 <i class="icon insta">instagram Post</i>
                 <img src="./images/snsPost1.png" alt="snsPost9">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://www.facebook.com/cadillackorea/posts/2492765887686087">
                 <i class="icon fBook">facebook Post</i>
                 <img src="./images/snsPost2.png" alt="snsPost10">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://youtu.be/5f21AsUYMa0">
                 <i class="icon ytube">youtube Post</i>
                 <img src="./images/snsPost3.png" alt="snsPost11">
               </a>
             </li>
-            <li class="col-2 m-col-2 s-col-1 xs-col-1">
+            <li class="col-2 m-col-2 s-col-1 xs-col-2">
               <a href="https://twitter.com/Cadillac/status/1341413564679073798?s=20">
                 <i class="icon twitter">twitter Post</i>
                 <img src="./images/snsPost4.png" alt="snsPost12">
@@ -381,25 +307,23 @@
         </ul>
       </section>
       <section class="map container row">
-        <div class="storeSearch col-3 m-col-3 s-col-4 xs-col-2">
+        <div class="mapInfo col-3 m-col-3 s-col-4 xs-col-4">
           <h2 class="sectionTitle h6">전시장 지도 보기</h2>
           <p class="sectionDescription">원하시는 전시장을 선택하시면 지도를 확인하실 수 있습니다.</p>
-          <div class="storeList">
-<!--             
-            <h3 class="location">서울 / 경기</h3>
-            <ul class="locationList">
+          <div class="locationList">
+            <!-- <h3 class="locationTitle subTitle1">서울 / 경기</h3>
+            <ul class="showroomList">
               <li>
-                <h4 class="storeName">서초 전시장</h4>
+                <h4 class="showroomName subTitle2">서초 전시장</h4>
                 <p class="address"><span>주소 :</span> 서울시 서초구 반포대로 59</p>
                 <p class="tel"><span>전화 :</span> 02-516-0560</p>
                 <p class="fax"><span>팩스 :</span> 02-516-0069</p>
-                <button type="button" title="서초 전시장" class="btnMapView">지도 보기</button>
+                <button type="button" title="서초 전시장" class="btn small btnMapView">지도 보기</button>
               </li>
-            </ul>
-             -->
+            </ul> -->
           </div>
         </div>
-        <div class="mapView col-9 m-col-5 s-col-4 xs-col-2"></div>
+        <div class="mapView col-9 m-col-5 s-col-4 xs-col-4"></div>
       </section>
     </main>
     <footer class="footer">
@@ -407,7 +331,7 @@
         <h2 class="a11yHidden">사이트맵</h2>
         <ul>
           <li class="row">
-            <h3 class="col-2 m-col-2 s-col-4 xs-col-2">캐딜락하우스 서울</h3>
+            <h3 class="col-2 m-col-2 s-col-4 xs-col-2 subTitle2">캐딜락하우스 서울</h3>
             <ul class="col-10 m-col-6 s-col-4 xs-col-2">
               <li><a href="https://www.cadillac.co.kr/house/house_info.php">캐딜락하우스 서울 정보</a></li>
               <li><a href="https://www.cadillac.co.kr/house/testdrive.php">시승예약</a></li>
@@ -416,7 +340,7 @@
             </ul>
           </li>
           <li class="row">
-            <h3 class="col-2 m-col-2 s-col-4 xs-col-2">차량정보</h3>
+            <h3 class="col-2 m-col-2 s-col-4 xs-col-2 subTitle2">차량정보</h3>
             <ul class="col-10 m-col-6 s-col-4 xs-col-2">
               <li><a href="https://www.cadillac.co.kr/vehicle/xt4/vehicle.php">XT4</a></li>
               <li><a href="https://www.cadillac.co.kr/vehicle/xt5/vehicle.php">XT5</a></li>
@@ -428,7 +352,7 @@
             </ul>
           </li>
           <li class="row">
-            <h3 class="col-2 m-col-2 s-col-4 xs-col-2">구매정보</h3>
+            <h3 class="col-2 m-col-2 s-col-4 xs-col-2 subTitle2">구매정보</h3>
             <ul class="col-10 m-col-6 s-col-4 xs-col-2">
               <li><a href="https://www.cadillac.co.kr/shopping/promotion.php">차량프로모션</a></li>
               <li><a href="https://www.cadillac.co.kr/shopping/onlinebrochure.php">온라인 브로셔</a></li>
@@ -438,14 +362,14 @@
             </ul>
           </li>
           <li class="row">
-            <h3 class="col-2 m-col-2 s-col-4 xs-col-2">뉴스</h3>
+            <h3 class="col-2 m-col-2 s-col-4 xs-col-2 subTitle2">뉴스</h3>
             <ul class="col-10 m-col-6 s-col-4 xs-col-2">
               <li><a href="https://www.cadillac.co.kr/board/news.php">뉴스</a></li>
               <li><a href="https://www.cadillac.co.kr/board/event.php">이벤트</a></li>
             </ul>
           </li>
           <li class="row">
-            <h3 class="col-2 m-col-2 s-col-4 xs-col-2">브랜드 정보</h3>
+            <h3 class="col-2 m-col-2 s-col-4 xs-col-2 subTitle2">브랜드 정보</h3>
             <ul class="col-10 m-col-6 s-col-4 xs-col-2">
               <li><a href="https://www.cadillac.co.kr/page/cadillac_history.php">캐딜락의 역사</a></li>
               <li><a href="https://www.cadillac.co.kr/page/concept.php">컨셉카</a></li>
@@ -453,7 +377,7 @@
             </ul>
           </li>
           <li class="row">
-            <h3 class="col-2 m-col-2 s-col-4 xs-col-2">서비스</h3>
+            <h3 class="col-2 m-col-2 s-col-4 xs-col-2 subTitle2">서비스</h3>
             <ul class="col-10 m-col-6 s-col-4 xs-col-2">
               <li><a href="https://www.cadillac.co.kr/page/parts_price.php#partsprice">부품 및 부품가격</a></li>
               <li><a href="https://www.cadillac.co.kr/page/warranty.php">캐딜락 보증</a></li>
@@ -465,7 +389,7 @@
             </ul>
           </li>
           <li class="row">
-            <h3 class="col-2 m-col-2 s-col-4 xs-col-2">HELP CENTER</h3>
+            <h3 class="col-2 m-col-2 s-col-4 xs-col-2 subTitle2">HELP CENTER</h3>
             <ul class="col-10 m-col-6 s-col-4 xs-col-2">
               <li><a href="https://www.cadillac.co.kr/page/customer_center.php">고객센터</a></li>
               <li><a href="https://www.cadillac.co.kr/page/cadillac_about.php">캐딜락코리아 소개</a></li>

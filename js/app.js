@@ -10,61 +10,55 @@ const $indicator = document.querySelectorAll(".indicator > li");
 const $lineUp = document.querySelector(".lineUp ul.row");
 const $promotion = document.querySelector(".promotion ul");
 const $mapView = document.querySelector(".mapView");
-const $storeList = document.querySelector(".storeList");
+const $locationList = document.querySelector(".locationList");
+
 // data
 
-const windowScroll = true;
-
-// carousel banner
-const carouselBanner = [
+// carousel
+const carousel = [
   {
+    carouselId: 1,
     bannerLink: "https://www.cadillac.co.kr/vehicle/xt4/vehicle.php",
     title: "2021 XT4",
     subTitle: "THE UNMISTAKABLE",
     description: "",
-    btnDescription: "XT4 SUV",
     imgUrl: "./images/mainBanner1.jpg",
-    imgAlt: "XT4 대표 이미지",
   },
   {
+    carouselId: 2,
     bannerLink: "https://www.cadillac.co.kr/vehicle/ct5_2021/vehicle.php",
     title: "2021 CT5",
     subTitle: "UNRIVALED DRIVING PLEASURE",
     description: "",
-    btnDescription: "CT5 SEDANS",
     imgUrl: "./images/mainBanner2.jpg",
-    imgAlt: "CT5 대표 이미지",
   },
   {
+    carouselId: 3,
     bannerLink: "https://www.cadillac.co.kr/vehicle/xt5/vehicle.php",
     title: "2020 XT5",
     subTitle: "THE UNDENIABLE",
     description: "",
-    btnDescription: "XT5 SUVS",
     imgUrl: "./images/mainBanner3.jpg",
-    imgAlt: "XT5 대표 이미지",
   },
   {
+    carouselId: 4,
     bannerLink: "https://www.cadillac.co.kr/vehicle/escalade_2021/vehicle.php",
     title: "2021 ESCALADE",
     subTitle: "NEVER STOP ARRIVING",
     description: "THE NEXT GENERATION 2021 ESCALADE & ESCALADE ESV",
-    btnDescription: "ESCALADE SUVS",
     imgUrl: "./images/mainBanner4.jpg",
-    imgAlt: "ESCALADE 대표 이미지",
   },
   {
+    carouselId: 5,
     bannerLink: "https://www.cadillac.co.kr/vehicle/ct4/vehicle.php",
     title: "2020 CT4",
     subTitle: "THE AGILE",
     description: "",
-    btnDescription: "CT4 SEDANS",
     imgUrl: "./images/mainBanner5.jpg",
-    imgAlt: "CT4 대표 이미지",
   },
 ];
 // lineUp
-const lineUpBanner = [
+const lineUp = [
   {
     bannerLink: "https://www.cadillac.co.kr/vehicle/xt5/vehicle.php",
     carType: "CROSSOVERS & SUVS",
@@ -90,22 +84,25 @@ const lineUpBanner = [
     imgAlt: "V-SERIES 대표 차종",
   },
 ];
-// banner
-const bannerData = [
+// promotion
+const promotion = [
   {
+    promotionId: 1,
     bannerType: "PROMOTION",
     bannerLink: "https://www.cadillac.co.kr/vehicle/xt5/vehicle.php",
     imgUrl: "./images/promotion1.png",
+    imgDescription: "",
   },
   {
+    promotionId: 2,
     bannerType: "EVENT",
     bannerLink: "https://www.cadillac.co.kr/vehicle/xt5/vehicle.php",
     imgUrl: "./images/promotion2.png",
+    imgDescription: "",
   },
 ];
-// 전시장 데이터
-
-const locationListData = [
+// showroom
+const showroom = [
   {
     location: "서울/경기",
     showroomList: [
@@ -212,116 +209,101 @@ const locationListData = [
     ],
   },
 ];
-
-const showroomData = [];
-
-const makeShowroomData = (locationListData) => {
+const makeShowroomData = (showroom) => {
   let arr = [];
 
-  locationListData.forEach(({ showroomList }) =>
-    showroomList.forEach((showroom) => (arr = [...arr, showroom]))
+  showroom.forEach(({ showroomList }) =>
+    showroomList.forEach((store) => (arr = [...arr, store]))
   );
   return arr;
 };
-
-const showroomList = makeShowroomData(locationListData);
-
-const carouselRender = ($carousel, carouselBanner) => {
+const showroomList = makeShowroomData(showroom);
+// render funciton
+const carouselRender = ($carousel, carousel) => {
   $carousel.innerHTML = `${[
-    carouselBanner[carouselBanner.length - 1],
-    ...carouselBanner,
-    carouselBanner[0],
+    carousel[carousel.length - 1],
+    ...carousel,
+    carousel[0],
   ]
     .map(
-      ({
-        bannerLink,
-        title,
-        subTitle,
-        description,
-        btnDescription,
-        imgUrl,
-        imgAlt,
-      }) => `<li>
-      <a href="${bannerLink}">
-        <div class="container">
-          <h3 class="h1">${title}</h3>
-          ${subTitle ? `<p class="h5">${subTitle}</p>` : ""}
-          ${
-            description
-              ? `<p class="description subTitle">${description}</p>`
-              : ""
-          }
-          <button type="button" class="btn xLarge outline white btnMore">${btnDescription} 자세히보기</button>
-        </div>
-        <img src="${imgUrl}" alt="${imgAlt}">
-      </a>
-    </li>`
+      ({ carouselId, bannerLink, title, subTitle, description, imgUrl }) => `
+      <li id="carouselBanner${carouselId}" style="background-image: url(${imgUrl});">
+        <a class ="col-12 m-col-8 s-col-4 xs-col-4" href="${bannerLink}">
+          <div class="container">
+            <h3 class="h1">${title}</h3>
+            ${subTitle ? `<p class="h3">${subTitle}</p>` : ""}
+            ${
+              description
+                ? `<p class="description subTitle">${description}</p>`
+                : ""
+            }
+            <button type="button" class="btn xLarge outline white btnMore">${title} 자세히보기</button>
+          </div>
+        </a>
+      </li>
+      `
     )
     .join("")}`;
 };
-
-const lineUpRender = ($lineUp, lineUpBanner) => {
-  $lineUp.innerHTML = `${lineUpBanner
+const lineUpRender = ($lineUp, lineUp) => {
+  $lineUp.innerHTML = `${lineUp
     .map(
       ({
         bannerLink,
         carType,
         imgUrl,
         imgAlt,
-      }) => `<li class="col-3 m-col-4 s-col-2 xs-col-1">
-  <a href="${bannerLink}">
-    <img src="${imgUrl}" alt="${imgAlt}">
-    <h3 class="carName subTitle2">${carType}</h3>
-  </a>
-</li>`
+      }) => `<li class="col-3 m-col-4 s-col-2 xs-col-2">
+      <a href="${bannerLink}">
+        <img src="${imgUrl}" alt="${imgAlt}">
+        <h3 class="carName h6">${carType}</h3>
+      </a>
+    </li>`
     )
     .join("")}`;
 };
-
-const bannerRender = ($promotion, bannerData) => {
-  $promotion.innerHTML = `${bannerData
+const promotionRender = ($promotion, promotion) => {
+  $promotion.innerHTML = `${promotion
     .map(
       ({
+        promotionId,
         bannerType,
         bannerLink,
         imgUrl,
-      }) => `<li class="promotion2 col-6 m-col-4 s-col-4 xs-col-2">
-  <a href="${bannerLink}">
-    <h2 class="division">${bannerType}</h2>
-    <img src="${imgUrl}" alt="TEST DRIVE THE BEST SEDAN DRIVE 시승 이벤트">
-  </a>
-</li>`
+        imgDescription,
+      }) => `<li class="promotion${promotionId} col-6 m-col-4 s-col-4 xs-col-4">
+      <a href="${bannerLink}">
+        <h2 class="sectionTitle h6">${bannerType}</h2>
+        <img src="${imgUrl}" alt="${imgDescription}">
+      </a>
+    </li>`
     )
     .join("")}`;
 };
-
-const showroomRender = ($storeList, locationListData) => {
-  $storeList.innerHTML = `${locationListData
+const showroomRender = ($locationList, showroom) => {
+  $locationList.innerHTML = `${showroom
     .map(
       ({
         location,
         showroomList,
-      }) => `<h3 class="location subTitle1">${location}</h3>
-    <ul class="locationList">
-      ${showroomList
-        .map(
-          ({ showroomId, shopName, address, tel }) => `<li id="${showroomId}">
-      <h4 class="storeName subTitle2">${shopName}</h4>
-      <p class="address"><span>주소 :</span> ${address}</p>
-      <p class="tel"><span>전화 :</span> ${tel}</p>
-      <button type="button" title="${shopName}" class="btnMapView">지도 보기</button>
-    </li>`
-        )
-        .join("")}
-    </ul>
+      }) => `<h3 class="locationTitle subTitle1">${location}</h3>
+      <ul class="showroomList">
+        ${showroomList
+          .map(
+            ({ showroomId, shopName, address, tel }) => `<li id="${showroomId}">
+            <h4 class="showroomName subTitle2">${shopName}</h4>
+            <p class="address"><span>주소 :</span> ${address}</p>
+            <p class="tel"><span>전화 :</span> ${tel}</p>
+            <button type="button" title="${shopName}"" class="btn small btnMapView">지도 보기</button>
+          </li>`
+          )
+          .join("")}
+      </ul>
     `
     )
     .join("")}`;
 };
 
-// const stopScroll = () => {
-
-// };
 let currentBanner = 0;
 let isMoving = false;
 const duration = 600;
@@ -354,10 +336,10 @@ let marker = new kakao.maps.Marker({
 });
 
 window.onload = () => {
-  carouselRender($carousel, carouselBanner);
-  lineUpRender($lineUp, lineUpBanner);
-  bannerRender($promotion, bannerData);
-  showroomRender($storeList, locationListData);
+  carouselRender($carousel, carousel);
+  lineUpRender($lineUp, lineUp);
+  promotionRender($promotion, promotion);
+  showroomRender($locationList, showroom);
   move(++currentBanner);
 
   autoPlay = setInterval(() => move(++currentBanner, duration), 3000);
@@ -371,10 +353,10 @@ window.onload = () => {
 // nav open
 $nav.onclick = ({ target }) => {
   if (
-    target.classList.contains("btnMenu") ||
-    target.classList.contains("menuIconBar")
+    target.classList.contains("btnSubMenuOpen") ||
+    target.classList.contains("navIconBar")
   ) {
-    const $navMenuBox = target.classList.contains("btnMenu")
+    const $navMenuBox = target.classList.contains("btnSubMenuOpen")
       ? target.parentElement
       : target.parentElement.parentElement;
     $navMenuBox.classList.toggle("active");
@@ -386,7 +368,7 @@ $nav.onclick = ({ target }) => {
   );
 };
 
-// searchbar open
+// searchBar open
 $search.onclick = ({ target }) => {
   if (!target.matches(".btnSearchOn")) return;
   target.parentNode.classList.add("on");
@@ -424,17 +406,13 @@ $visual.onclick = ({ target }) => {
 $carousel.ontransitionend = () => {
   isMoving = false;
   const directionCheck =
-    currentBanner === 0
-      ? 1
-      : currentBanner === carouselBanner.length + 1
-      ? -1
-      : 0;
+    currentBanner === 0 ? 1 : currentBanner === carousel.length + 1 ? -1 : 0;
   if (!directionCheck) return;
-  currentBanner += carouselBanner.length * directionCheck;
+  currentBanner += carousel.length * directionCheck;
   move(currentBanner);
 };
 
-$storeList.onclick = ({ target }) => {
+$locationList.onclick = ({ target }) => {
   let showroom = showroomList.filter(
     (showroom) => showroom.showroomId === target.parentNode.id * 1
   );
