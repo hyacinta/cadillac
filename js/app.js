@@ -268,10 +268,10 @@ const lineUpRender = ($lineUp, lineUpBanner) => {
         carType,
         imgUrl,
         imgAlt,
-      }) => `<li class="col-3 m-col-4 s-col-2 xs-col-2">
+      }) => `<li class="col-3 m-col-4 s-col-2 xs-col-1">
   <a href="${bannerLink}">
     <img src="${imgUrl}" alt="${imgAlt}">
-    <h3 class="carName">${carType}</h3>
+    <h3 class="carName subTitle2">${carType}</h3>
   </a>
 </li>`
     )
@@ -298,12 +298,15 @@ const bannerRender = ($promotion, bannerData) => {
 const showroomRender = ($storeList, locationListData) => {
   $storeList.innerHTML = `${locationListData
     .map(
-      ({ location, showroomList }) => `<h3 class="location">${location}</h3>
+      ({
+        location,
+        showroomList,
+      }) => `<h3 class="location subTitle1">${location}</h3>
     <ul class="locationList">
       ${showroomList
         .map(
           ({ showroomId, shopName, address, tel }) => `<li id="${showroomId}">
-      <h4 class="storeName">${shopName}</h4>
+      <h4 class="storeName subTitle2">${shopName}</h4>
       <p class="address"><span>주소 :</span> ${address}</p>
       <p class="tel"><span>전화 :</span> ${tel}</p>
       <button type="button" title="${shopName}" class="btnMapView">지도 보기</button>

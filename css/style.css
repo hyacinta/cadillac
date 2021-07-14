@@ -591,6 +591,18 @@ section .sectionTitle {
 
 /* nav 태블릿, 모바일 */
 @media all and (max-width: 1079px) {
+  section.lineUp,
+  section.promotion,
+  section.sns,
+  section.map,
+  div.lineUp,
+  div.promotion,
+  div.sns,
+  div.map {
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+  }
+
   /* navigation */
   header .container {
     display: flex;
@@ -698,7 +710,6 @@ section .sectionTitle {
   }
   .subMenu li a {
     padding-left: 1rem;
-    font-size: 1.4rem;
   }
   .subMenu a:hover {
     border-color: rgba(0, 0, 0, 0);
@@ -742,11 +753,40 @@ section .sectionTitle {
   .carousel .container .btnMore {
     display: none;
   }
-  .quickBanner h3 {
-    font-size: 1.6rem;
+  .lineUp img {
+    width: 80%;
+  }
+  .quickBanner {
+    padding-bottom: 0.8rem;
+  }
+  .quickBanner li {
+    margin-bottom: 1.5em;
+  }
+  .quickBanner .icon {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    margin-bottom: 0.5em;
   }
   .map .sectionTitle {
     padding: 8px;
     font-size: 2rem;
+  }
+  .footer {
+    padding: 3.2rem 0;
+  }
+  .footer .sitemap {
+    display: none;
+  }
+  .footer .copyright {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .copyright > ul {
+    justify-content: center;
+  }
+  .copyright .row li {
+    margin-bottom: 0.5em;
   }
 }
